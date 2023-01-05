@@ -1,19 +1,28 @@
 {
   "name": "@mesulive/ui",
   "version": "0.0.0",
-  "main": "./index.tsx",
-  "types": "./index.tsx",
+  "main": "src/index.tsx",
+  "types": "src/index.tsx",
   "license": "MIT",
   "scripts": {
     "lint": "TIMING=1 eslint \"**/*.ts*\""
   },
+  "dependencies": {
+    "@emotion/cache": "^11.10.5",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mesulive/shared": "workspace:*",
+    "@mui/material": "^5.11.3",
+    "color": "^4.2.3",
+    "react": "^18.2.0"
+  },
   "devDependencies": {
     "@mesulive/tsconfig": "workspace:*",
+    "@types/color": "^3.0.3",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "eslint": "^8.31.0",
     "eslint-config-mesulive": "workspace:*",
-    "react": "^18.2.0",
     "typescript": "^4.9.4"
   }
 }

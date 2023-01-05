@@ -1,10 +1,9 @@
-import { Button } from "@mesulive/ui";
-
-export default function Docs() {
+const Docs = () => {
   return (
     <div>
       <h1>My great docs</h1>
-      <Button />
     </div>
   );
-}
+};
+
+export default Docs;
