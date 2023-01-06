@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node v18
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
 
       - name: Set yarn v3
         run: yarn set version 3.3.1
