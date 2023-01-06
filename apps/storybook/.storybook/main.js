@@ -21,6 +21,7 @@ module.exports = {
   viteFinal: async (config) => {
     return mergeConfig(config, {
       plugins: [tsconfigPaths.default()],
+      base: "/mesulive/",
     });
   },
   // webpackFinal: async (config) => {
