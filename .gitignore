@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/yarn,webstorm,turbo,node
-# Edit at https://www.toptal.com/developers/gitignore?templates=yarn,webstorm,turbo,node
+# Created by https://www.toptal.com/developers/gitignore/api/yarn,webstorm,turbo,node,storybookjs
+# Edit at https://www.toptal.com/developers/gitignore?templates=yarn,webstorm,turbo,node,storybookjs
 
 ### Node ###
 # Logs
@@ -141,6 +141,12 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+### StorybookJs ###
+# gitignore template for the Storybook, UI guide for front apps
+# website: https://storybook.js.org/
+
+storybook-static/
+
 ### Turbo ###
 # Turborepo task cache
 .turbo
@@ -275,4 +281,4 @@ fabric.properties
 # and uncomment the following lines
 # .pnp.*
 
-# End of https://www.toptal.com/developers/gitignore/api/yarn,webstorm,turbo,node
+# End of https://www.toptal.com/developers/gitignore/api/yarn,webstorm,turbo,node,storybookjs
