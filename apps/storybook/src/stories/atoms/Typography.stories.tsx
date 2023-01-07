@@ -1,13 +1,13 @@
 /* eslint-disable no-underscore-dangle */
-import { TypographyStory } from '$/stories/atoms/TypographyStory';
 import {
   PageHelperText as PageHelperTextComponent,
   PageTitle as PageTitleComponent,
   SectionSubtitle as SectionSubtitleComponent,
   SectionTitle as SectionTitleComponent,
-} from '@mesulive/ui';
+} from "@mesulive/ui";
 /* eslint-disable @typescript-eslint/naming-convention */
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { TypographyStory } from "~/stories/atoms/TypographyStory";
 
 const meta: ComponentMeta<typeof TypographyStory> = {
   title: "Atom/Typography",
