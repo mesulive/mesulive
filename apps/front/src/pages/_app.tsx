@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 import Layout from "~/pages/layout";
+import "~/globals.css";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
