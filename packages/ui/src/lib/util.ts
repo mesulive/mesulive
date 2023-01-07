@@ -1,7 +1,7 @@
 import { Interpolation } from "@emotion/styled";
 import { of } from "@mesulive/shared";
 import { SxProps, Theme } from "@mui/material";
-import { BREAKPOINTS, ScreenType } from "~/lib/constant";
+import { BREAKPOINTS, ScreenType } from "~ui/lib/constant";
 
 export const sx = of<SxProps<Theme>>;
 

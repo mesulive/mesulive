@@ -1,5 +1,5 @@
-import { Flex, FlexProps } from "~/component/box/Flex";
-import { mergeStyles } from "~/lib/util";
+import { Flex, FlexProps } from "~ui/component/box/Flex";
+import { mergeStyles } from "~ui/lib/util";
 
 export const SectionBox = ({ sx: sxProp, ...restProps }: FlexProps) => (
   <Flex

@@ -1,5 +1,5 @@
-import { SectionBoxStory } from "$/stories/templates/SectionBoxStory";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { SectionBoxStory } from "~/stories/templates/SectionBoxStory";
 
 export default {
   title: "Templates/SectionBox",

@@ -1,5 +1,5 @@
 import { styled, Typography, TypographyProps } from "@mui/material";
-import { COLORS } from "~/lib";
+import { COLORS } from "~ui/lib";
 
 export const PageTitle = styled((props: TypographyProps<"h1">) => (
   <Typography component="h1" {...props} />

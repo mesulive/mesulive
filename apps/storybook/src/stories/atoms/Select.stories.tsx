@@ -1,5 +1,5 @@
-import { SelectStory } from "$/stories/atoms/SelectStory";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { SelectStory } from "~/stories/atoms/SelectStory";
 
 const meta: ComponentMeta<typeof SelectStory> = {
   title: "Atom/Select",

@@ -1,8 +1,8 @@
-import { ButtonStory, ButtonStoryProps } from "$/stories/atoms/ButtonStory";
 import { MainButton, OptionButton, Sx } from "@mesulive/ui";
 import { ButtonProps as MuiButtonProps, Stack } from "@mui/material";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { FC } from "react";
+import { ButtonStory, ButtonStoryProps } from "~/stories/atoms/ButtonStory";
 
 const meta: ComponentMeta<typeof ButtonStory> = {
   title: "Atom/Button",

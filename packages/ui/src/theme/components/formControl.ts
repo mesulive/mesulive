@@ -1,5 +1,5 @@
-import { ThemeComponents } from "~/lib";
-import { DEFAULT_FONT_FAMILY } from "~/lib/constant";
+import { ThemeComponents } from "~ui/lib";
+import { DEFAULT_FONT_FAMILY } from "~ui/lib/constant";
 
 export const MuiFormControl: ThemeComponents["MuiFormControl"] = {
   styleOverrides: {

@@ -1,5 +1,14 @@
 {
   "extends": "@mesulive/tsconfig/nextjs.json",
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "../../packages/ui"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "jsxImportSource": "@emotion/react",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"],
+      "~ui/*": ["../../packages/ui/src/*"],
+      "~shared/*": ["../../packages/shared/src/*"]
+    }
+  }
 }

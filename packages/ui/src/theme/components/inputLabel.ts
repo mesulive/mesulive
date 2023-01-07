@@ -1,6 +1,6 @@
-import { COLORS } from "~/lib/color";
-import { INPUT_PADDING } from "~/lib/constant";
-import { ThemeComponents } from "~/lib/type";
+import { COLORS } from "~ui/lib/color";
+import { INPUT_PADDING } from "~ui/lib/constant";
+import { ThemeComponents } from "~ui/lib/type";
 
 export const MuiInputLabel: ThemeComponents["MuiInputLabel"] = {
   styleOverrides: {

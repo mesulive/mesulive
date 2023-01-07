@@ -1,8 +1,8 @@
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 import {
   NumberTextFieldStory,
   TextFieldStory,
-} from "$/stories/atoms/TextFieldStory";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+} from "~/stories/atoms/TextFieldStory";
 
 export default {
   title: "Atom/TextField",

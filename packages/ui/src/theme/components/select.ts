@@ -1,8 +1,8 @@
 import { pxArray } from "@mesulive/shared";
 import { Fade } from "@mui/material";
 import Color from "color";
-import { COLORS } from "~/lib/color";
-import { ThemeComponents } from "~/lib/type";
+import { COLORS } from "~ui/lib/color";
+import { ThemeComponents } from "~ui/lib/type";
 
 const ITEM_HEIGHT = 48;
 

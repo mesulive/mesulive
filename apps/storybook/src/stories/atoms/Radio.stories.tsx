@@ -1,5 +1,5 @@
-import { RadioStory, RadioStoryProps } from "$/stories/atoms/RadioStory";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { RadioStory, RadioStoryProps } from "~/stories/atoms/RadioStory";
 
 const meta: ComponentMeta<typeof RadioStory> = {
   title: "Atom/RadioButton/Radio",

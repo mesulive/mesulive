@@ -1,5 +1,5 @@
 import { Properties, Property } from "csstype";
-import { of } from "~/type";
+import { of } from "~shared/type";
 
 export const cssObject = of<Properties>;
 

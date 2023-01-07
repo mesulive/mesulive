@@ -1,8 +1,8 @@
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 import {
   CheckboxStory,
   CheckboxStoryProps,
-} from "$/stories/atoms/CheckboxStory";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+} from "~/stories/atoms/CheckboxStory";
 
 const meta: ComponentMeta<typeof CheckboxStory> = {
   title: "Atom/Checkbox",
