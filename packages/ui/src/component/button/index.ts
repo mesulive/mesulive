@@ -1,4 +1,2 @@
-import { MainButton } from "~ui/component/button/MainButton";
-import { OptionButton } from "~ui/component/button/OptionButton";
-
-export { MainButton, OptionButton };
+export * from "./MainButton";
+export * from "./OptionButton";

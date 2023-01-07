@@ -1,4 +1,4 @@
-import nextJest from 'next/jest';
+import nextJest from "next/jest";
 
 /** @type {import('jest').Config} */
 export default nextJest({
@@ -10,8 +10,6 @@ export default nextJest({
   moduleDirectories: ["node_modules", "<rootDir>/"],
   moduleNameMapper: {
     "^~/(.*)$": "<rootDir>/src/$1",
-    "^~ui/(.*)$": "<rootDir>/../../packages/ui/src/$1",
-    "^~shared/(.*)$": "<rootDir>/../../packages/shared/src/$1",
   },
   testEnvironment: "jest-environment-jsdom",
 });

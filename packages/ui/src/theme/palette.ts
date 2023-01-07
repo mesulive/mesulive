@@ -1,5 +1,5 @@
 import { PaletteOptions } from "@mui/material";
-import { COLORS } from "~ui/lib";
+import { COLORS } from "../lib";
 
 export const palette: PaletteOptions = {
   primary: {

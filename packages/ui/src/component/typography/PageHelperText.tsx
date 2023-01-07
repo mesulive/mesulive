@@ -1,5 +1,5 @@
 import { styled, Typography } from "@mui/material";
-import { COLORS } from "~ui/lib";
+import { COLORS } from "../../lib";
 
 export const PageHelperText = styled(Typography)({
   fontSize: 12,

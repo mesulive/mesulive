@@ -61,6 +61,7 @@ module.exports = {
       },
     ],
     "@typescript-eslint/no-namespace": "off",
+    "object-shorthand": "warn",
   },
   parser: "@typescript-eslint/parser",
   settings: {

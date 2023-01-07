@@ -1,5 +1,5 @@
 import { styled, Typography } from "@mui/material";
-import { COLORS } from "~ui/lib/color";
+import { COLORS } from "../../lib";
 
 export const SectionSubtitle = styled(Typography)(({ theme }) => ({
   color: COLORS.GRAY_1,

@@ -1,6 +1,6 @@
 import { Box, BoxProps } from "@mui/material";
 import { Property } from "csstype";
-import { mergeStyles, Sx } from "~ui/lib/util";
+import { mergeStyles, Sx } from "../../lib";
 
 export interface FlexProps extends BoxProps, Sx {
   direction?: Property.FlexDirection;

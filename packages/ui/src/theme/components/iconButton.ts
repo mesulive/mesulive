@@ -1,6 +1,5 @@
 import Color from "color";
-import { COLORS } from "~ui/lib/color";
-import { ThemeComponents } from "~ui/lib/type";
+import { COLORS, ThemeComponents } from "../../lib";
 
 export const MuiIconButton: ThemeComponents["MuiIconButton"] = {
   styleOverrides: {

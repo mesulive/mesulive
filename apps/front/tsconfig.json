@@ -7,8 +7,6 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"],
-      "~ui/*": ["../../packages/ui/src/*"],
-      "~shared/*": ["../../packages/shared/src/*"]
     }
   }
 }

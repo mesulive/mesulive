@@ -9,11 +9,11 @@ import {
   ThemeProvider as MuiThemeProvider,
 } from "@mui/material";
 import { ReactNode } from "react";
-import "~ui/globals.css";
-import { DEFAULT_FONT_FAMILY } from "~ui/lib/constant";
-import { breakpoints } from "~ui/theme/breakpoints";
-import { components } from "~ui/theme/components";
-import { palette } from "~ui/theme/palette";
+import "../globals.css";
+import { DEFAULT_FONT_FAMILY } from "../lib";
+import { components } from "./components";
+import { palette } from "./palette";
+import { breakpoints } from "./breakpoints";
 
 export const theme = createTheme({
   typography: {
