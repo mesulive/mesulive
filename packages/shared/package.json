@@ -3,6 +3,10 @@
   "packageManager": "yarn@3.3.1",
   "main": "src/index.ts",
   "types": "src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mesulive/mesulive"
+  },
   "scripts": {
     "lint": "TIMING=1 eslint \"**/*.ts*\"",
     "test": "jest",
@@ -20,5 +24,9 @@
   "dependencies": {
     "csstype": "^3.1.1",
     "react": "^18.2.0"
-  }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "version": "0.0.1"
 }

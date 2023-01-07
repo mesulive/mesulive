@@ -1,6 +1,5 @@
 {
   "name": "@mesulive/ui",
-  "version": "0.0.0",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "files": [
@@ -9,6 +8,10 @@
   "license": "MIT",
   "scripts": {
     "lint": "TIMING=1 eslint \"**/*.ts*\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mesulive/mesulive"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",
@@ -28,5 +31,9 @@
     "eslint": "^8.31.0",
     "eslint-config-mesulive": "workspace:*",
     "typescript": "^4.9.4"
-  }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "version": "0.0.1"
 }
