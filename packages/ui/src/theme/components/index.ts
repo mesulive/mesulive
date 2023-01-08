@@ -13,6 +13,7 @@ import { MuiOutlinedInput } from "./outlinedInput";
 import { MuiRadio } from "./radio";
 import { MuiSelect } from "./select";
 import { MuiTextField } from "./textField";
+import { MuiPopover } from "./popover";
 
 export const components: ThemeOptions["components"] = {
   MuiButton,
@@ -26,6 +27,7 @@ export const components: ThemeOptions["components"] = {
   MuiInputBase,
   MuiInputLabel,
   MuiOutlinedInput,
+  MuiPopover,
   MuiRadio,
   MuiSelect,
   MuiTextField,
