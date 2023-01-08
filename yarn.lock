@@ -2669,6 +2669,7 @@ __metadata:
     "@babel/preset-typescript": ^7.18.6
     "@mdx-js/react": ^2.2.1
     "@mesulive/front": "workspace:*"
+    "@mesulive/shared": "workspace:*"
     "@mesulive/tsconfig": "workspace:*"
     "@mesulive/ui": "workspace:*"
     "@mui/material": ^5.11.3

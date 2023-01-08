@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "@mesulive/front": "workspace:*",
-    "@mesulive/ui": "workspace:*",
     "@mesulive/shared": "workspace:*",
+    "@mesulive/ui": "workspace:*",
     "@mui/material": "^5.11.3",
     "next": "13.1.1",
     "react": "^18.2.0",
