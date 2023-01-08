@@ -1,6 +1,6 @@
-import { MainButton } from '@mesulive/ui';
+import { MainButton } from "@mesulive/ui";
 import { useContext } from "react";
-import { FlowContext } from "~/components/common/context/FlowProvider";
+import { FlowContext } from "~/lib/flow/context";
 import { FlameState } from "~/lib/flame/store/states";
 import { useRecoilCallback } from "~/lib/hooks/recoil";
 

@@ -12,7 +12,7 @@ import { useSelector } from "@xstate/react";
 import { pipe } from "fp-ts/function";
 import { useContext, useMemo } from "react";
 import { useRecoilState } from "recoil";
-import { FlowContext } from "~/components/common/context/FlowProvider";
+import { FlowContext } from "~/lib/flow/context";
 import { Flame } from "~/lib/flame";
 import { FlameState } from "~/lib/flame/store/states";
 import { FlowMachineState } from "~/lib/flow/machine";

@@ -13,13 +13,13 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import Cube from "~/assets/images/cube.svg";
 import Flame from "~/assets/images/flame.svg";
 import Star from "~/assets/images/star.svg";
-import { HEADER_HEIGHT } from "~/components/UI/header/constant";
+import { HEADER_HEIGHT } from "~/components/common/header/constant";
 import {
   NAVIGATION_TOGGLE_DURATION,
   NAVIGATION_WIDTH,
-} from "~/components/UI/navigation/constant";
-import { HoverBox } from "~/components/UI/navigation/HoverBox";
-import { NavLink } from "~/components/UI/navigation/NavLink";
+} from "~/components/common/navigation/constant";
+import { HoverBox } from "~/components/common/navigation/HoverBox";
+import { NavLink } from "~/components/common/navigation/NavLink";
 import { useRefCallback } from "~/lib/hooks/ref";
 import { useScreenType } from "~/lib/hooks/window";
 import { navigationStates } from "~/lib/navigation/store";

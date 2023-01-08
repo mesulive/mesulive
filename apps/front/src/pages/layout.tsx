@@ -2,13 +2,13 @@ import { COLORS } from "@mesulive/ui";
 import { Box } from "@mui/material";
 import { PropsWithChildren } from "react";
 import { useRecoilValue } from "recoil";
-import { Header } from "~/components/UI/header";
-import { HEADER_HEIGHT } from "~/components/UI/header/constant";
-import { Navigation } from "~/components/UI/navigation";
+import { Header } from "~/components/common/header";
+import { HEADER_HEIGHT } from "~/components/common/header/constant";
+import { Navigation } from "~/components/common/navigation";
 import {
   NAVIGATION_TOGGLE_DURATION,
   NAVIGATION_WIDTH,
-} from "~/components/UI/navigation/constant";
+} from "~/components/common/navigation/constant";
 import { navigationStates } from "~/lib/navigation/store";
 
 const Layout = ({ children }: PropsWithChildren) => {

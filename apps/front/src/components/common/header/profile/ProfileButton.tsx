@@ -1,0 +1,66 @@
+import { Button, Typography } from "@mui/material";
+import { COLORS, DefaultProfile, Flex, sx } from "@mesulive/ui";
+import { ArrowDropDown } from "@mui/icons-material";
+import { useRecoilValue } from "recoil";
+import { ProfileState } from "~/lib/profile/states";
+import { PASTEL_LIGHTNESS } from "@mesulive/shared";
+import Color from "color";
+
+export const ProfileButton = () => {
+  const currentUsername = useRecoilValue(ProfileState.currentUsernameAtom);
+  const profile = useRecoilValue(ProfileState.profileAtoms(currentUsername));
+
+  return (
+    <Button sx={styles.button}>
+      <Flex direction="row" align="center" sx={styles.flex}>
+        <DefaultProfile
+          sx={styles.icon}
+          color={
+            currentUsername
+              ? profile.profileColor
+              : Color.hsl(0, 0, PASTEL_LIGHTNESS).toString()
+          }
+        />
+        <Typography sx={styles.usernameTypo}>
+          {currentUsername ?? "(설정안함)"}
+        </Typography>
+        <ArrowDropDown sx={styles.icon} />
+      </Flex>
+    </Button>
+  );
+};
+
+const styles = {
+  button: sx({
+    color: COLORS.GRAY_1,
+
+    "&:hover": {
+      backgroundColor: COLORS.GRAY_7,
+    },
+    "& .MuiTouchRipple-root": {
+      color: COLORS.GRAY_5,
+    },
+  }),
+  flex: sx({
+    gap: 8,
+  }),
+  usernameTypo: sx((theme) => ({
+    fontSize: 12,
+    width: 64,
+
+    [theme.breakpoints.up("tablet")]: {
+      fontSize: 14,
+      width: 84,
+    },
+  })),
+  icon: sx((theme) => ({
+    width: 24,
+    height: 24,
+    borderRadius: "8px",
+
+    [theme.breakpoints.up("tablet")]: {
+      width: 32,
+      height: 32,
+    },
+  })),
+};

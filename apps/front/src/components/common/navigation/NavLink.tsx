@@ -19,7 +19,7 @@ import {
   NAVIGATION_LINK_INFO_BOX_CLASSNAME,
   NAVIGATION_LINK_SELECTED_CLASSNAME,
   NavigationUtil,
-} from "~/components/UI/navigation/constant";
+} from "~/components/common/navigation/constant";
 import { useRefCallback } from "~/lib/hooks/ref";
 import { useScreenType } from "~/lib/hooks/window";
 import { navigationStates } from "~/lib/navigation/store";

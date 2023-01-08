@@ -6,7 +6,7 @@ import { useRecoilValue } from "recoil";
 import {
   NAVIGATION_LINK_HOVER_BOX_ANIMATION_DURATION,
   NAVIGATION_LINK_HOVER_BOX_CLASSNAME,
-} from "~/components/UI/navigation/constant";
+} from "~/components/common/navigation/constant";
 import { navigationStates } from "~/lib/navigation/store";
 
 export const HoverBox = () => {
