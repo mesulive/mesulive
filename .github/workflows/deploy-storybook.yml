@@ -15,6 +15,7 @@ jobs:
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      NODE_OPTIONS: "--max_old_space_size=4096"
     steps:
       - name: Checkout
         uses: actions/checkout@v3
