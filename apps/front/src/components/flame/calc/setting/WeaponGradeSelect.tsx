@@ -21,7 +21,7 @@ export const WeaponGradeSelect = ({ sx: sxProp }: Props) => {
         value={weaponGrade}
         onChange={({ target: { value } }) => {
           if (typeof value === "number") {
-            if (value >= 1 && value <= 7) {
+            if (value >= 0 && value <= 7) {
               setWeaponGrade(value);
               return;
             }

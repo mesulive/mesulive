@@ -40,6 +40,17 @@ export namespace FlameState {
     default: undefined,
   });
 
+  export const aimStatHelperTextSelector = selector<string>({
+    key: "flame/aimStatHelperTextAtom",
+    get: ({ get }) => {
+      if (get(equipTypeAtom) === "WEAPON" && get(weaponGradeAtom) > 0) {
+        return "무기 추옵에 대한 환산 스탯은 제외됩니다.";
+      }
+
+      return "";
+    },
+  });
+
   export const aimStatErrorSelector = selector<string>({
     key: "flame/aimStatInvalidSelector",
     get: ({ get }) => {

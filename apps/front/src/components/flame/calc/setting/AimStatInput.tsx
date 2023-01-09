@@ -11,6 +11,9 @@ interface Props extends Sx {}
 
 export const AimStatInput = ({ sx: sxProp }: Props) => {
   const [aimStat, setAimStat] = useRecoilState(FlameState.aimStatAtom);
+  const aimStatHelperText = useRecoilValue(
+    FlameState.aimStatHelperTextSelector
+  );
   const aimStatError = useRecoilValue(FlameState.aimStatErrorSelector);
 
   const inputUnfilledState = useSelector(
@@ -34,6 +37,7 @@ export const AimStatInput = ({ sx: sxProp }: Props) => {
       helperText={
         aimStatError ||
         (inputUnfilled && "목표 환산 스탯을 입력해주세요") ||
+        aimStatHelperText ||
         EMPTY_TEXT
       }
       sx={sxProp}

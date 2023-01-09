@@ -13,12 +13,12 @@ export const SettingSection = () => {
       <SectionTitle>설정</SectionTitle>
       <Box sx={styles.inputContainer}>
         <EquipTypeSelect />
+        <BossDropCheckbox sx={{ mb: 20 }} />
         <EquipLevelInput />
         <MethodSelect />
-        <BossDropCheckbox sx={{ mb: 20 }} />
         <Flex direction="row" sx={{ gridColumn: "1 / 3" }} gap={16}>
-          <AimStatInput sx={{ flex: 1 }} />
           <WeaponGradeSelect sx={{ flex: 1 }} />
+          <AimStatInput sx={{ flex: 1 }} />
         </Flex>
       </Box>
     </SectionBox>
