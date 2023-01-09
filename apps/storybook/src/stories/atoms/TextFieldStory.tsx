@@ -1,5 +1,10 @@
 import { NumberTextField } from "@mesulive/ui";
 import { InputAdornment, TextField } from "@mui/material";
+import { EMPTY_TEXT } from "@mesulive/shared";
+
+/**
+ * FIXME NumberTextField의 onChange에 걸려있는 길이 제약 조건도 테스트할 수 있어야 함
+ */
 
 export interface TextFieldStoryProps {
   value?: string;
@@ -8,13 +13,13 @@ export interface TextFieldStoryProps {
   startAdornment?: string;
   endAdornment?: string;
   error?: boolean;
-  type?: "number";
+  showUnit?: boolean;
 }
 
 export const TextFieldStory = ({
   value,
   label,
-  helperText = "\u00a0",
+  helperText = EMPTY_TEXT,
   startAdornment = "상위",
   endAdornment = "메소",
   error,
@@ -38,10 +43,11 @@ export const TextFieldStory = ({
 export const NumberTextFieldStory = ({
   value,
   label,
-  helperText = "\u00a0",
+  helperText = EMPTY_TEXT,
   startAdornment = "상위",
   endAdornment = "메소",
   error,
+  showUnit = false,
 }: TextFieldStoryProps) => (
   <NumberTextField
     value={value}
@@ -56,5 +62,6 @@ export const NumberTextFieldStory = ({
       ),
     }}
     error={error}
+    showUnit={showUnit}
   />
 );
