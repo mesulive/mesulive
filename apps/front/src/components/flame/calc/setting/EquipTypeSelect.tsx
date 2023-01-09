@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useRecoilState } from "recoil";
 import { Flame } from "~/lib/flame";
-import { FlameState } from "~/lib/flame/store/states";
+import { FlameState } from "~/lib/flame/states";
 
 const LABEL = "장비 종류";
 

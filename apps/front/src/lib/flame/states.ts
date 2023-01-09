@@ -1,16 +1,10 @@
 import { atom, selector } from "recoil";
-import { Flame } from "~/lib/flame";
-import { WeaponType } from "~/lib/maple/types";
+import { Flame } from "~/lib/flame/index";
 
 export namespace FlameState {
   export const equipTypeAtom = atom<Flame.EquipType>({
     key: "flame/equipTypeAtom",
     default: "NON_WEAPON",
-  });
-
-  export const weaponTypeAtom = atom<WeaponType>({
-    key: "flame/weaponTypeAtom",
-    default: "한손검",
   });
 
   export const methodsAtom = atom<Flame.Method[]>({
@@ -36,6 +30,11 @@ export namespace FlameState {
     },
   });
 
+  export const bossDropAtom = atom<boolean>({
+    key: "flame/bossDrop",
+    default: false,
+  });
+
   export const aimStatAtom = atom<number | undefined>({
     key: "flame/aimStatAtom",
     default: undefined,
@@ -53,9 +52,9 @@ export namespace FlameState {
     },
   });
 
-  export const bossDropAtom = atom<boolean>({
-    key: "flame/bossDrop",
-    default: false,
+  export const weaponGradeAtom = atom<number>({
+    key: "flame/weaponGradeAtom",
+    default: 0,
   });
 
   export const inputUnfilledSelector = selector<boolean>({

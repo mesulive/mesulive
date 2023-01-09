@@ -4,7 +4,7 @@ import { useSelector } from "@xstate/react";
 import { useContext, useMemo } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { FlowContext } from "~/lib/flow/context";
-import { FlameState } from "~/lib/flame/store/states";
+import { FlameState } from "~/lib/flame/states";
 import { FlowMachineState } from "~/lib/flow/machine";
 
 export const EquipLevelInput = () => {

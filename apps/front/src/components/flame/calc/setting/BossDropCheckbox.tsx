@@ -1,7 +1,7 @@
 import { mergeStyles, Sx } from "@mesulive/ui";
 import { Checkbox, FormControlLabel } from "@mui/material";
 import { useRecoilState } from "recoil";
-import { FlameState } from "~/lib/flame/store/states";
+import { FlameState } from "~/lib/flame/states";
 
 interface Props extends Sx {}
 
