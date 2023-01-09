@@ -10,7 +10,7 @@ export const BossDropCheckbox = ({ sx: sxProp }: Props) => {
 
   return (
     <FormControlLabel
-      sx={mergeStyles({ justifyContent: "center" }, sxProp)}
+      sx={mergeStyles({ justifyContent: "center", userSelect: "none" }, sxProp)}
       control={
         <Checkbox
           checked={bossDrop}
