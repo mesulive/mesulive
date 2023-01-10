@@ -16,7 +16,7 @@
     "@mesulive/shared": "workspace:*",
     "@mesulive/ui": "workspace:*",
     "@mui/icons-material": "^5.11.0",
-    "@mui/material": "^5.11.3",
+    "@mui/material": "^5.11.4",
     "@vercel/analytics": "^0.1.6",
     "@xstate/react": "^3.0.1",
     "color": "^4.2.3",

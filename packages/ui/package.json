@@ -19,7 +19,7 @@
     "@emotion/styled": "^11.10.5",
     "@mesulive/shared": "workspace:*",
     "@mui/icons-material": "^5.11.0",
-    "@mui/material": "^5.11.3",
+    "@mui/material": "^5.11.4",
     "color": "^4.2.3",
     "csstype": "^3.1.1",
     "fp-ts": "^2.13.1",
