@@ -5,30 +5,46 @@ import { useRecoilValue } from "recoil";
 import { ProfileState } from "~/lib/profile/states";
 import { PASTEL_LIGHTNESS } from "@mesulive/shared";
 import Color from "color";
+import {
+  PopoverActionContext,
+  withPopoverProvider,
+} from "~/components/common/context/PopoverProvider";
+import { ProfileSettingPopover } from "~/components/common/header/profile/ProfileSettingPopover";
+import { useContext } from "react";
 
-export const ProfileButton = () => {
+export const ProfileButton = withPopoverProvider(() => {
   const currentUsername = useRecoilValue(ProfileState.currentUsernameAtom);
   const profile = useRecoilValue(ProfileState.profileAtoms(currentUsername));
 
+  const { openPopover } = useContext(PopoverActionContext);
+
   return (
-    <Button sx={styles.button}>
-      <Flex direction="row" align="center" sx={styles.flex}>
-        <DefaultProfile
-          sx={styles.icon}
-          color={
-            currentUsername
-              ? profile.profileColor
-              : Color.hsl(0, 0, PASTEL_LIGHTNESS).toString()
-          }
-        />
-        <Typography sx={styles.usernameTypo}>
-          {currentUsername ?? "(설정안함)"}
-        </Typography>
-        <ArrowDropDown sx={styles.icon} />
-      </Flex>
-    </Button>
+    <>
+      <Button
+        sx={styles.button}
+        onClick={({ currentTarget }) => {
+          openPopover(currentTarget);
+        }}
+      >
+        <Flex direction="row" align="center" sx={styles.flex}>
+          <DefaultProfile
+            sx={styles.icon}
+            color={
+              currentUsername
+                ? profile.profileColor
+                : Color.hsl(0, 0, PASTEL_LIGHTNESS).toString()
+            }
+          />
+          <Typography sx={styles.usernameTypo}>
+            {currentUsername ?? "(설정안함)"}
+          </Typography>
+          <ArrowDropDown sx={styles.icon} />
+        </Flex>
+      </Button>
+      <ProfileSettingPopover />
+    </>
   );
-};
+});
 
 const styles = {
   button: sx({

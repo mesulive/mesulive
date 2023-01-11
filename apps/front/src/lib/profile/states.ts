@@ -9,7 +9,7 @@ export namespace ProfileState {
   });
 
   export const profileAtoms = atomFamily<
-    Record<PrimaryStat, number> & { profileColor: string },
+    Record<PrimaryStat, number | undefined> & { profileColor: string },
     string | undefined
   >({
     key: "profile/profileAtoms",
@@ -17,7 +17,7 @@ export namespace ProfileState {
       ...values(PrimaryStat.enum).reduce(
         (acc, stat) => ({
           ...acc,
-          [stat]: 0,
+          [stat]: undefined,
         }),
         {} as Record<PrimaryStat, number>
       ),
@@ -26,7 +26,7 @@ export namespace ProfileState {
   });
 
   export const statEfficiencySelectors = selectorFamily<
-    number,
+    number | undefined,
     { username: string; key: PrimaryStat }
   >({
     key: "profile/statEfficiencySelector",
@@ -39,7 +39,7 @@ export namespace ProfileState {
       ({ set }, newValue) => {
         set(profileAtoms(username), (currVal) => ({
           ...currVal,
-          [key]: newValue instanceof DefaultValue ? 0 : newValue,
+          [key]: newValue instanceof DefaultValue ? undefined : newValue,
         }));
       },
   });

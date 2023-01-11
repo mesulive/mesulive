@@ -2,9 +2,11 @@ import { TextField, TextFieldProps } from "@mui/material";
 import { pipe } from "fp-ts/function";
 import * as O from "fp-ts/Option";
 import { putUnit } from "@mesulive/shared/src/number";
-import { EMPTY_TEXT } from "@mesulive/shared";
 
-export type NumberTextFieldProps = Omit<TextFieldProps, "type"> & {
+export type NumberTextFieldProps = Omit<TextFieldProps, "type" | "value"> & {
+  onNumberChange?: (num: number | undefined) => void;
+  value?: number | undefined;
+  max?: number;
   showUnit?: boolean;
 };
 
@@ -13,6 +15,8 @@ export const NumberTextField = ({
   showUnit,
   helperText,
   value,
+  max,
+  onNumberChange,
   onChange,
   ...restProps
 }: NumberTextFieldProps) => (
@@ -24,19 +28,39 @@ export const NumberTextField = ({
       }
       onKeyDown?.(event);
     }}
-    value={value}
+    value={pipe(
+      value,
+      O.fromPredicate((v) => v !== undefined),
+      O.matchW(
+        () => "",
+        (v) => v
+      )
+    )}
     onChange={(event) => {
       if (event.target.value.length <= 28) {
+        if (onNumberChange) {
+          pipe(
+            event.target.value,
+            O.fromPredicate((v) => !!v),
+            O.map(Number),
+            O.toUndefined,
+            O.fromPredicate((v) => v === undefined || !Number.isNaN(v)),
+            O.filter((v) => v === undefined || max === undefined || v <= max),
+            O.match(() => {
+              /* do nothing */
+            }, onNumberChange)
+          );
+          return;
+        }
         onChange?.(event);
       }
     }}
     helperText={
       pipe(
         helperText,
-        O.fromPredicate((v) => !!v),
-        O.filter((v) => v !== EMPTY_TEXT),
+        O.fromPredicate((v) => v !== undefined),
         O.toUndefined
-      ) ||
+      ) ??
       pipe(
         Number(value),
         Math.floor,

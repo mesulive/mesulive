@@ -1,6 +1,6 @@
 import { ThemeComponents } from "../../lib";
 import Color from "color";
-import { Collapse } from "@mui/material";
+import { Fade } from "@mui/material";
 
 export const MuiPopover: ThemeComponents["MuiPopover"] = {
   styleOverrides: {
@@ -21,6 +21,6 @@ export const MuiPopover: ThemeComponents["MuiPopover"] = {
       vertical: "top",
       horizontal: "center",
     },
-    TransitionComponent: Collapse,
+    TransitionComponent: Fade,
   },
 };

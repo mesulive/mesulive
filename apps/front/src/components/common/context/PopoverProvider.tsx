@@ -8,8 +8,8 @@ import {
 import { MultiProvider, WithEmotionProps } from "@mesulive/shared";
 
 export interface IPopoverAction {
-  open: (target: HTMLElement) => void;
-  close: () => void;
+  openPopover: (target: HTMLElement) => void;
+  closePopover: () => void;
 }
 
 export interface IPopoverValue {
@@ -18,10 +18,10 @@ export interface IPopoverValue {
 }
 
 export const PopoverActionContext = createContext<IPopoverAction>({
-  open: () => {
+  openPopover: () => {
     /* Do nothing */
   },
-  close: () => {
+  closePopover: () => {
     /* Do nothing */
   },
 });
@@ -34,17 +34,17 @@ export const PopoverValueContext = createContext<IPopoverValue>({
 export const PopoverProvider = ({ children }: { children: ReactNode }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-  const actions = useMemo(
+  const actions = useMemo<IPopoverAction>(
     () => ({
-      open: (target: HTMLElement) => {
+      openPopover: (target: HTMLElement) => {
         setAnchorEl(target);
       },
-      close: () => setAnchorEl(null),
+      closePopover: () => setAnchorEl(null),
     }),
     []
   );
 
-  const values = useMemo(
+  const values = useMemo<IPopoverValue>(
     () => ({
       anchorEl,
       open: !!anchorEl,
