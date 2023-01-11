@@ -24,6 +24,7 @@ module.exports = {
         devDependencies: ["**/*.test.*", "**/*.stories.*", "**/*.config.*"],
       },
     ],
+    "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
     "react/display-name": "off",
     "react/function-component-definition": [
