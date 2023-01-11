@@ -46,7 +46,7 @@ jobs:
         run: yarn
 
       - name: Build storybook
-        run: yarn build --filter=storybook
+        run: yarn build --filter storybook
 
       - name: Deploy github page
         uses: peaceiris/actions-gh-pages@v3
