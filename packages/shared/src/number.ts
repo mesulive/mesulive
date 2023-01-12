@@ -1,3 +1,6 @@
+import { pipe } from "fp-ts/function";
+import { option } from "fp-ts";
+
 export const putUnit = (n: number) => {
   if (n === 0) {
     return "0";
@@ -25,3 +28,6 @@ export const putUnit = (n: number) => {
 
   return `${isMinus ? "-" : ""}${resultString}`;
 };
+
+export const floorNullableNumber = (num: number | undefined) =>
+  pipe(num, option.fromNullable, option.map(Math.floor), option.toUndefined);

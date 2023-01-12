@@ -28,10 +28,8 @@ export const AimStatInput = ({ sx: sxProp }: Props) => {
 
   return (
     <NumberTextField
-      value={String(aimStat ?? "")}
-      onChange={({ target: { value } }) => {
-        setAimStat(value ? Number(value) : undefined);
-      }}
+      value={aimStat}
+      onNumberChange={setAimStat}
       label="목표 환산 스탯"
       error={!!aimStatError || inputUnfilled}
       helperText={

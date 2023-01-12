@@ -6,6 +6,8 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { FlowContext } from "~/lib/flow/context";
 import { FlameState } from "~/lib/flame/states";
 import { FlowMachineState } from "~/lib/flow/machine";
+import { flow } from "fp-ts/function";
+import { floorNullableNumber } from "@mesulive/shared/src/number";
 
 export const EquipLevelInput = () => {
   const [equipLevel, setEquipLevel] = useRecoilState(FlameState.equipLevelAtom);
@@ -24,14 +26,8 @@ export const EquipLevelInput = () => {
   return (
     <NumberTextField
       label="장비 레벨"
-      value={String(equipLevel || "")}
-      onChange={({ target: { value } }) => {
-        if (value === "") {
-          setEquipLevel(undefined);
-          return;
-        }
-        setEquipLevel(parseInt(value, 10));
-      }}
+      value={equipLevel}
+      onNumberChange={flow(floorNullableNumber, setEquipLevel)}
       error={!!equipLevelError || inputUnfilled}
       helperText={
         equipLevelError ||
