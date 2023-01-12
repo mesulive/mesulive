@@ -1,4 +1,3 @@
-import { EMPTY_TEXT } from "@mesulive/shared";
 import { NumberTextField, Sx } from "@mesulive/ui";
 import { useSelector } from "@xstate/react";
 import { useContext, useMemo } from "react";
@@ -35,8 +34,7 @@ export const AimStatInput = ({ sx: sxProp }: Props) => {
       helperText={
         aimStatError ||
         (inputUnfilled && "목표 환산 스탯을 입력해주세요") ||
-        aimStatHelperText ||
-        EMPTY_TEXT
+        aimStatHelperText
       }
       sx={sxProp}
     />

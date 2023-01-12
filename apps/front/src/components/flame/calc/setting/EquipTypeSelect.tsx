@@ -1,11 +1,5 @@
-import { EMPTY_TEXT, values } from "@mesulive/shared";
-import {
-  FormControl,
-  FormHelperText,
-  InputLabel,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import { values } from "@mesulive/shared";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useRecoilState } from "recoil";
 import { Flame } from "~/lib/flame";
 import { FlameState } from "~/lib/flame/states";
@@ -33,7 +27,6 @@ export const EquipTypeSelect = () => {
           </MenuItem>
         ))}
       </Select>
-      <FormHelperText>{EMPTY_TEXT}</FormHelperText>
     </FormControl>
   );
 };
