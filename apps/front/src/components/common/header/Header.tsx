@@ -5,7 +5,6 @@ import { IconButton, useTheme } from "@mui/material";
 import Link from "next/link";
 import Logo from "~/assets/images/logo.svg";
 import { useNavigation } from "~/lib/navigation/store";
-import { ProfileButton } from "~/components/common/header/profile/ProfileButton";
 
 export const Header = () => {
   const theme = useTheme();
@@ -68,7 +67,8 @@ export const Header = () => {
           />
         </Link>
       </Flex>
-      <ProfileButton />
+      {/* TODO 프로필 버튼 추가*/}
+      {/*<ProfileButton />*/}
     </Flex>
   );
 };
