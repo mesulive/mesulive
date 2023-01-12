@@ -21,7 +21,7 @@ const Layout = ({ children }: PropsWithChildren) => {
       <Box
         sx={(theme) => ({
           backgroundColor: COLORS.BACKGROUND,
-          minHeight: "100vh",
+          minHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
           p: 16,
           mt: HEADER_HEIGHT,
           transition: `margin-left ${NAVIGATION_TOGGLE_DURATION}ms cubic-bezier(0, 0, 0.2, 1) 0ms`, // Drawer transition strategy
