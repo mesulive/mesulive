@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NumberTextField } from "./NumberTextField";
-import { cleanup, fireEvent, render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 
 const MAX = 999;
 
@@ -19,14 +19,22 @@ const NumberTextFieldContainer = () => {
   );
 };
 
-afterEach(cleanup);
-
 describe("NumberTextField", () => {
   let input: HTMLInputElement;
+  let unmount: () => void = () => {
+    // do nothing
+  };
 
   beforeEach(() => {
-    const { getByRole } = render(<NumberTextFieldContainer />);
+    const { getByRole, unmount: unmountComponent } = render(
+      <NumberTextFieldContainer />
+    );
     input = getByRole("input") as HTMLInputElement;
+    unmount = unmountComponent;
+  });
+
+  afterEach(() => {
+    unmount();
   });
 
   test("empty string", () => {
