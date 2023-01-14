@@ -5,7 +5,7 @@ export const MuiDialog: ThemeComponents["MuiDialog"] = {
     root: ({ theme }) =>
       theme.unstable_sx({
         "& .MuiDialog-paper": {
-          borderRadius: "40px",
+          borderRadius: "24px",
           p: 16,
         },
       }),

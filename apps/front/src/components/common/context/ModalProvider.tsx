@@ -7,44 +7,44 @@ import {
 } from "react";
 import { MultiProvider, WithEmotionProps } from "@mesulive/shared";
 
-export interface IPopoverAction {
-  openPopover: (target: HTMLElement) => void;
-  closePopover: () => void;
+export interface IModalAction {
+  openModal: (target: HTMLElement | null) => void;
+  closeModal: () => void;
 }
 
-export interface IPopoverValue {
+export interface IModalValue {
   anchorEl: HTMLElement | null;
   open: boolean;
 }
 
-export const PopoverActionContext = createContext<IPopoverAction>({
-  openPopover: () => {
+export const ModalActionContext = createContext<IModalAction>({
+  openModal: () => {
     /* Do nothing */
   },
-  closePopover: () => {
+  closeModal: () => {
     /* Do nothing */
   },
 });
 
-export const PopoverValueContext = createContext<IPopoverValue>({
+export const ModalValueContext = createContext<IModalValue>({
   anchorEl: null,
   open: false,
 });
 
-export const PopoverProvider = ({ children }: { children: ReactNode }) => {
+export const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-  const actions = useMemo<IPopoverAction>(
+  const actions = useMemo<IModalAction>(
     () => ({
-      openPopover: (target: HTMLElement) => {
+      openModal: (target: HTMLElement | null) => {
         setAnchorEl(target);
       },
-      closePopover: () => setAnchorEl(null),
+      closeModal: () => setAnchorEl(null),
     }),
     []
   );
 
-  const values = useMemo<IPopoverValue>(
+  const values = useMemo<IModalValue>(
     () => ({
       anchorEl,
       open: !!anchorEl,
@@ -56,9 +56,9 @@ export const PopoverProvider = ({ children }: { children: ReactNode }) => {
     <MultiProvider
       providers={[
         // eslint-disable-next-line react/jsx-key
-        <PopoverActionContext.Provider value={actions} />,
+        <ModalActionContext.Provider value={actions} />,
         // eslint-disable-next-line react/jsx-key
-        <PopoverValueContext.Provider value={values} />,
+        <ModalValueContext.Provider value={values} />,
       ]}
     >
       {children}
@@ -70,7 +70,7 @@ export const withPopoverProvider =
   <T,>(Component: ComponentType<WithEmotionProps<T>>) =>
   (props: WithEmotionProps<T>) =>
     (
-      <PopoverProvider>
+      <ModalProvider>
         <Component {...props} />
-      </PopoverProvider>
+      </ModalProvider>
     );

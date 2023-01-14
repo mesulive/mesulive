@@ -6,9 +6,9 @@ import { ProfileState } from "~/lib/profile/states";
 import { PASTEL_LIGHTNESS } from "@mesulive/shared";
 import Color from "color";
 import {
-  PopoverActionContext,
+  ModalActionContext,
   withPopoverProvider,
-} from "~/components/common/context/PopoverProvider";
+} from "~/components/common/context/ModalProvider";
 import { ProfileSettingPopover } from "~/components/common/header/profile/ProfileSettingPopover";
 import { useContext } from "react";
 
@@ -16,14 +16,14 @@ export const ProfileButton = withPopoverProvider(() => {
   const currentUsername = useRecoilValue(ProfileState.currentUsernameAtom);
   const profile = useRecoilValue(ProfileState.profileAtoms(currentUsername));
 
-  const { openPopover } = useContext(PopoverActionContext);
+  const { openModal } = useContext(ModalActionContext);
 
   return (
     <>
       <Button
         sx={styles.button}
         onClick={({ currentTarget }) => {
-          openPopover(currentTarget);
+          openModal(currentTarget);
         }}
       >
         <Flex direction="row" align="center" sx={styles.flex}>

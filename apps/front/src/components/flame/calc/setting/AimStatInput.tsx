@@ -1,4 +1,4 @@
-import { NumberTextField, Sx } from "@mesulive/ui";
+import { NumberTextField } from "@mesulive/ui";
 import { useSelector } from "@xstate/react";
 import { useContext, useMemo } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -6,9 +6,7 @@ import { FlowContext } from "~/lib/flow/context";
 import { FlameState } from "~/lib/flame/states";
 import { FlowMachineState } from "~/lib/flow/machine";
 
-interface Props extends Sx {}
-
-export const AimStatInput = ({ sx: sxProp }: Props) => {
+export const AimStatInput = () => {
   const [aimStat, setAimStat] = useRecoilState(FlameState.aimStatAtom);
   const aimStatHelperText = useRecoilValue(
     FlameState.aimStatHelperTextSelector
@@ -36,7 +34,6 @@ export const AimStatInput = ({ sx: sxProp }: Props) => {
         (inputUnfilled && "목표 환산 스탯을 입력해주세요") ||
         aimStatHelperText
       }
-      sx={sxProp}
     />
   );
 };

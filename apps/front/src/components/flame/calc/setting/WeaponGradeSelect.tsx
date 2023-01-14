@@ -1,20 +1,17 @@
-import { Sx } from "@mesulive/ui";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { FlameState } from "~/lib/flame/states";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
-interface Props extends Sx {}
-
 const LABEL = "무기 추옵 등급";
 
-export const WeaponGradeSelect = ({ sx: sxProp }: Props) => {
+export const WeaponGradeSelect = () => {
   const equipType = useRecoilValue(FlameState.equipTypeAtom);
   const [weaponGrade, setWeaponGrade] = useRecoilState(
     FlameState.weaponGradeAtom
   );
 
   return (
-    <FormControl sx={sxProp} disabled={equipType !== "WEAPON"}>
+    <FormControl disabled={equipType !== "WEAPON"}>
       <InputLabel>{LABEL}</InputLabel>
       <Select
         label={LABEL}
