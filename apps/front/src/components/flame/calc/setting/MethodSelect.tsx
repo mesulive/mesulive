@@ -12,9 +12,9 @@ import { useSelector } from "@xstate/react";
 import { pipe } from "fp-ts/function";
 import { useContext, useMemo } from "react";
 import { useRecoilState } from "recoil";
-import { FlowContext } from "~/lib/flow/context";
 import { Flame } from "~/lib/flame";
 import { FlameState } from "~/lib/flame/states";
+import { FlowContext } from "~/lib/flow/flowProvider";
 import { FlowMachineState } from "~/lib/flow/machine";
 
 const LABEL = "추가옵션 설정 수단";

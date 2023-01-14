@@ -9,7 +9,7 @@ export interface IFlowContext {
 
 export const FlowContext = createContext<IFlowContext>({} as IFlowContext);
 
-export const Context = ({ children }: { children?: ReactNode }) => {
+export const FlowProvider = ({ children }: { children?: ReactNode }) => {
   const service = useInterpret(flowMachine);
 
   return (

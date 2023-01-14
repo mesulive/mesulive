@@ -1,13 +1,13 @@
 import { EMPTY_TEXT } from "@mesulive/shared";
+import { floorNullableNumber } from "@mesulive/shared/src/number";
 import { NumberTextField } from "@mesulive/ui";
 import { useSelector } from "@xstate/react";
+import { flow } from "fp-ts/function";
 import { useContext, useMemo } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { FlowContext } from "~/lib/flow/context";
 import { FlameState } from "~/lib/flame/states";
+import { FlowContext } from "~/lib/flow/flowProvider";
 import { FlowMachineState } from "~/lib/flow/machine";
-import { flow } from "fp-ts/function";
-import { floorNullableNumber } from "@mesulive/shared/src/number";
 
 export const EquipLevelInput = () => {
   const [equipLevel, setEquipLevel] = useRecoilState(FlameState.equipLevelAtom);

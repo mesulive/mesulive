@@ -1,17 +1,17 @@
 import { Flex, PageTitle } from "@mesulive/ui";
 import { Box } from "@mui/material";
-import { Context } from "~/lib/flow/context";
+import { GlobalProvider } from "~/components/common/context/GlobalProvider";
 import { MultiProvider } from "~/components/common/context/MultiProvider";
-import { PageProvider } from "~/components/common/context/PageProvider";
 import { CalcButton } from "~/components/flame/calc/CalcButton";
 import { SettingSection } from "~/components/flame/calc/setting/SettingSection";
 import { Flame } from "~/lib/flame";
+import { FlowProvider } from "~/lib/flow/flowProvider";
 
 const Home = () => {
   return (
     <MultiProvider
       // eslint-disable-next-line react/jsx-key
-      providers={[<PageProvider pageKey={Flame.PAGE_KEY} />, <Context />]}
+      providers={[<GlobalProvider scope={Flame.PAGE_KEY} />, <FlowProvider />]}
     >
       <Flex gap={16}>
         <Box>

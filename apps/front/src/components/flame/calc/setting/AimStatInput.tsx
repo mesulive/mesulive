@@ -2,8 +2,8 @@ import { NumberTextField } from "@mesulive/ui";
 import { useSelector } from "@xstate/react";
 import { useContext, useMemo } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { FlowContext } from "~/lib/flow/context";
 import { FlameState } from "~/lib/flame/states";
+import { FlowContext } from "~/lib/flow/flowProvider";
 import { FlowMachineState } from "~/lib/flow/machine";
 
 export const AimStatInput = () => {
