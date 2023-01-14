@@ -6,6 +6,7 @@ export const MuiButton: ThemeComponents["MuiButton"] = {
       whiteSpace: "nowrap",
       boxShadow: "none",
       borderRadius: 16,
+      fontWeight: "bold",
 
       "&:hover, &:active": {
         boxShadow: "none",
@@ -13,6 +14,12 @@ export const MuiButton: ThemeComponents["MuiButton"] = {
       ...(ownerState.variant === "contained" && {
         color: "white",
       }),
+    }),
+    outlined: () => ({
+      borderWidth: 2,
+      "&:hover, &:active": {
+        borderWidth: 2,
+      },
     }),
   },
 };

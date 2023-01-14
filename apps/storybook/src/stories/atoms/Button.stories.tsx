@@ -1,5 +1,5 @@
 import { MainButton, OptionButton, Sx } from "@mesulive/ui";
-import { ButtonProps as MuiButtonProps, Stack } from "@mui/material";
+import { Button, ButtonProps as MuiButtonProps, Stack } from "@mui/material";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { FC } from "react";
 import { ButtonStory, ButtonStoryProps } from "~/stories/atoms/ButtonStory";
@@ -53,6 +53,10 @@ const Template = ({
     </Stack>
   );
 };
+
+export const Default: ComponentStory<typeof ButtonStory> = ({ ...props }) => (
+  <Template ButtonProps={{ Component: Button }} {...props} />
+);
 
 export const Main: ComponentStory<typeof ButtonStory> = ({ ...props }) => (
   <Template
