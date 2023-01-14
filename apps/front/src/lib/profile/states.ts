@@ -1,6 +1,7 @@
 import { getRandomPastelColor, values } from "@mesulive/shared";
 import { atom, atomFamily, DefaultValue, selectorFamily } from "recoil";
 import { PrimaryStat } from "~/lib/maple/types";
+import { localStorageEffect } from "~/lib/recoil/effect";
 
 export namespace ProfileState {
   export const currentUsernameAtom = atom<string | undefined>({
@@ -23,6 +24,9 @@ export namespace ProfileState {
       ),
       profileColor: getRandomPastelColor(50),
     }),
+    effects: (username) => [
+      localStorageEffect(`profile/profileAtoms/${username}`),
+    ],
   });
 
   export const statEfficiencySelectors = selectorFamily<
