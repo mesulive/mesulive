@@ -2,7 +2,7 @@ import { MainButton } from "@mesulive/ui";
 import { useContext } from "react";
 import { FlameState } from "~/lib/flame/states";
 import { FlowContext } from "~/lib/flow/flowProvider";
-import { useRecoilCallback } from "~/lib/hooks/recoil";
+import { useRecoilCallback } from "~/lib/recoil/hook";
 
 export const CalcButton = () => {
   const flowService = useContext(FlowContext).service;

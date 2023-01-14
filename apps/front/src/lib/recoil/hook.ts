@@ -27,7 +27,6 @@ export const useRecoilCallback = <Args extends ReadonlyArray<unknown>, Return>(
     deps ?? []
   );
 };
-
 export const useContinuousRecoilValue = <T>(
   recoilValue: RecoilValue<T>,
   defaultValue: T

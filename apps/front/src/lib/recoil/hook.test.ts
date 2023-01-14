@@ -2,10 +2,7 @@ import { act, cleanup, waitFor } from "@testing-library/react";
 import { useState } from "react";
 import { atom, selector } from "recoil";
 import { v4 } from "uuid";
-import {
-  useContinuousRecoilValue,
-  useRecoilCallback,
-} from "~/lib/hooks/recoil";
+import { useContinuousRecoilValue, useRecoilCallback } from "~/lib/recoil/hook";
 import { renderHook } from "~/lib/test";
 
 jest.useFakeTimers();
