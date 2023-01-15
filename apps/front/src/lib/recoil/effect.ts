@@ -5,17 +5,19 @@ export const localStorageEffect: <T>(
 ) => AtomEffect<T> =
   (localStorageKey) =>
   ({ setSelf, onSet }) => {
-    const savedValue = localStorage.getItem(localStorageKey);
+    if (typeof window !== undefined) {
+      const savedValue = localStorage.getItem(localStorageKey);
 
-    if (savedValue != null) {
-      setSelf(JSON.parse(savedValue));
-    }
-
-    onSet((newValue, _, isReset) => {
-      if (isReset) {
-        localStorage.removeItem(localStorageKey);
+      if (savedValue != null) {
+        setSelf(JSON.parse(savedValue));
       }
 
-      localStorage.setItem(localStorageKey, JSON.stringify(newValue));
-    });
+      onSet((newValue, _, isReset) => {
+        if (isReset) {
+          localStorage.removeItem(localStorageKey);
+        }
+
+        localStorage.setItem(localStorageKey, JSON.stringify(newValue));
+      });
+    }
   };

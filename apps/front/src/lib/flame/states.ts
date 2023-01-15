@@ -1,5 +1,9 @@
+import { values } from "@mesulive/shared";
+import { pipe } from "fp-ts/function";
 import { atom, selector } from "recoil";
 import { Flame } from "~/lib/flame/index";
+import { PrimaryStat } from "~/lib/maple/types";
+import { ProfileState } from "~/lib/profile/states";
 
 export namespace FlameState {
   export const equipTypeAtom = atom<Flame.EquipType>({
@@ -68,10 +72,20 @@ export namespace FlameState {
     default: 0,
   });
 
+  // TODO 임시 state. ProfileButton 표시하게 되면 삭제
+  export const statEfficiencyUnfilledSelector = selector<boolean>({
+    key: "flame/statEfficiencyUnfilledSelector",
+    get: ({ get }) =>
+      pipe(get(ProfileState.profileAtoms("")), (v) =>
+        values(PrimaryStat.enum).every((stat) => v[stat] === undefined)
+      ),
+  });
+
   export const inputUnfilledSelector = selector<boolean>({
     key: "flame/inputUnfilledSelector",
     get: ({ get }) =>
       [methodsAtom].some((atom) => !get(atom).length) ||
-      [equipLevelAtom, aimStatAtom].some((atom) => get(atom) === undefined),
+      [equipLevelAtom, aimStatAtom].some((atom) => get(atom) === undefined) ||
+      get(statEfficiencyUnfilledSelector),
   });
 }

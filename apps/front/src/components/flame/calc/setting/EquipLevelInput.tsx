@@ -13,14 +13,14 @@ export const EquipLevelInput = () => {
   const [equipLevel, setEquipLevel] = useRecoilState(FlameState.equipLevelAtom);
   const equipLevelError = useRecoilValue(FlameState.equipLevelErrorSelector);
 
-  const inputUnfilledState = useSelector(
+  const isInputUnfilledState = useSelector(
     useContext(FlowContext).service,
     (state) => state.matches(FlowMachineState.enum.inputUnfilled)
   );
 
   const inputUnfilled = useMemo(
-    () => inputUnfilledState && equipLevel === undefined,
-    [equipLevel, inputUnfilledState]
+    () => isInputUnfilledState && equipLevel === undefined,
+    [equipLevel, isInputUnfilledState]
   );
 
   return (
