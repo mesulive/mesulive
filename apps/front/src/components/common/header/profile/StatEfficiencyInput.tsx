@@ -1,4 +1,4 @@
-import { NumberTextField } from "@mesulive/ui";
+import { COLORS, NumberTextField } from "@mesulive/ui";
 import { useRecoilState } from "recoil";
 import { PrimaryStat, PrimaryStatInfoMap } from "~/lib/maple/types";
 import { ProfileState } from "~/lib/profile/states";
@@ -25,6 +25,16 @@ export const StatEfficiencyInput = ({ stat }: Props) => {
       helperText=""
       label={PrimaryStatInfoMap[stat].text}
       max={999}
+      sx={{
+        ...(statEfficiency !== undefined && {
+          "& .MuiFilledInput-root": {
+            backgroundColor: COLORS.MAIN_LIGHTER,
+          },
+          "& .MuiInputLabel-root": {
+            color: COLORS.MAIN,
+          },
+        }),
+      }}
     />
   );
 };
