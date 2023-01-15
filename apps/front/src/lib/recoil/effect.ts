@@ -1,11 +1,13 @@
 import { AtomEffect } from "recoil";
 
+const localStorage = typeof window !== "undefined" ? window.localStorage : null;
+
 export const localStorageEffect: <T>(
   localStorageKey: string
 ) => AtomEffect<T> =
   (localStorageKey) =>
   ({ setSelf, onSet }) => {
-    if (typeof window !== undefined) {
+    if (localStorage) {
       const savedValue = localStorage.getItem(localStorageKey);
 
       if (savedValue != null) {
