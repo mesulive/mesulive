@@ -1,7 +1,7 @@
-import { PrimaryStat, PrimaryStatInfoMap } from "~/lib/maple/types";
-import { useRecoilState } from "recoil";
-import { ProfileState } from "~/lib/profile/states";
 import { NumberTextField } from "@mesulive/ui";
+import { useRecoilState } from "recoil";
+import { PrimaryStat, PrimaryStatInfoMap } from "~/lib/maple/types";
+import { ProfileState } from "~/lib/profile/states";
 
 interface Props {
   stat: PrimaryStat;
@@ -19,6 +19,7 @@ export const StatEfficiencyInput = ({ stat }: Props) => {
 
   return (
     <NumberTextField
+      variant="filled"
       value={statEfficiency}
       onNumberChange={setStateEfficiency}
       helperText=""

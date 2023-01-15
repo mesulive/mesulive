@@ -5,6 +5,7 @@ import { MuiDialog } from "./dialog";
 import { MuiDialogActions } from "./dialogActions";
 import { MuiDialogContent } from "./dialogContent";
 import { MuiDialogTitle } from "./dialogTitle";
+import { MuiFilledInput } from "./filledInput";
 import { MuiFormControl } from "./formControl";
 import { MuiFormControlLabel } from "./formControlLabel";
 import { MuiFormGroup } from "./formGroup";
@@ -26,6 +27,7 @@ export const components: ThemeOptions["components"] = {
   MuiDialogActions,
   MuiDialogContent,
   MuiDialogTitle,
+  MuiFilledInput,
   MuiFormControl,
   MuiFormControlLabel,
   MuiFormGroup,

@@ -1,6 +1,6 @@
-import { NumberTextField } from "@mesulive/ui";
-import { InputAdornment, TextField } from "@mui/material";
 import { EMPTY_TEXT } from "@mesulive/shared";
+import { NumberTextField } from "@mesulive/ui";
+import { InputAdornment, TextField, TextFieldProps } from "@mui/material";
 import { useState } from "react";
 
 /**
@@ -15,6 +15,7 @@ export interface TextFieldStoryProps {
   error?: boolean;
   showUnit?: boolean;
   max?: number;
+  variant?: TextFieldProps["variant"];
 }
 
 export const TextFieldStory = ({
@@ -23,20 +24,22 @@ export const TextFieldStory = ({
   startAdornment = "상위",
   endAdornment = "메소",
   error,
+  variant,
 }: TextFieldStoryProps) => {
   return (
     <TextField
       label={label}
       helperText={helperText}
       InputProps={{
-        startAdornment: (
+        startAdornment: startAdornment && (
           <InputAdornment position="start">{startAdornment}</InputAdornment>
         ),
-        endAdornment: (
+        endAdornment: endAdornment && (
           <InputAdornment position="end">{endAdornment}</InputAdornment>
         ),
       }}
       error={error}
+      variant={variant}
     />
   );
 };
@@ -49,6 +52,7 @@ export const NumberTextFieldStory = ({
   error,
   showUnit = false,
   max,
+  variant,
 }: TextFieldStoryProps) => {
   const [num, setNum] = useState<number | undefined>(undefined);
 
@@ -59,16 +63,17 @@ export const NumberTextFieldStory = ({
       helperText={helperText}
       onNumberChange={setNum}
       InputProps={{
-        startAdornment: (
+        startAdornment: startAdornment && (
           <InputAdornment position="start">{startAdornment}</InputAdornment>
         ),
-        endAdornment: (
+        endAdornment: endAdornment && (
           <InputAdornment position="end">{endAdornment}</InputAdornment>
         ),
       }}
       error={error}
       showUnit={showUnit}
       max={max}
+      variant={variant}
     />
   );
 };

@@ -15,6 +15,12 @@ export const MuiInputLabel: ThemeComponents["MuiInputLabel"] = {
         }px) scale(0.8)`,
       },
     }),
+    filled: ({ theme }) =>
+      theme.unstable_sx({
+        position: "relative",
+        transform: "none",
+        mb: 4,
+      }),
     shrink: () => ({
       fontWeight: 700,
     }),
