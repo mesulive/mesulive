@@ -11,6 +11,11 @@ export const MuiInputAdornment: ThemeComponents["MuiInputAdornment"] = {
           wordBreak: "keep-all",
           whiteSpace: "pre",
           fontSize: "inherit",
+          transition: "color 0.15s ease-in-out",
+
+          ".Mui-focused &": {
+            color: COLORS.MAIN,
+          },
         },
       }),
   },
