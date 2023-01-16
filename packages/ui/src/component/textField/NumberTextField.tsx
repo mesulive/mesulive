@@ -1,7 +1,7 @@
+import { putUnit } from "@mesulive/shared/src/number";
 import { TextField, TextFieldProps } from "@mui/material";
 import { pipe } from "fp-ts/function";
 import * as O from "fp-ts/Option";
-import { putUnit } from "@mesulive/shared/src/number";
 
 export type NumberTextFieldProps = Omit<TextFieldProps, "type" | "value"> & {
   onNumberChange?: (num: number | undefined) => void;
@@ -15,7 +15,7 @@ export const NumberTextField = ({
   showUnit,
   helperText,
   value,
-  max,
+  max = 10 ** 24 - 1,
   onNumberChange,
   onChange,
   ...restProps
@@ -56,11 +56,7 @@ export const NumberTextField = ({
       }
     }}
     helperText={
-      pipe(
-        helperText,
-        O.fromPredicate((v) => v !== undefined),
-        O.toUndefined
-      ) ??
+      helperText ||
       pipe(
         Number(value),
         Math.floor,
