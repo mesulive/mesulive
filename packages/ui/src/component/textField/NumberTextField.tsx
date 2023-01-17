@@ -14,7 +14,7 @@ export const NumberTextField = ({
   showUnit,
   helperText,
   value,
-  max = 10 ** 24 - 1,
+  max,
   onNumberChange,
   onChange,
   ...restProps
@@ -40,9 +40,7 @@ export const NumberTextField = ({
             O.toUndefined,
             O.fromPredicate((v) => v === undefined || !Number.isNaN(v)),
             O.filter((v) => v === undefined || max === undefined || v <= max),
-            O.match(() => {
-              /* do nothing */
-            }, onNumberChange)
+            O.match(() => {}, onNumberChange)
           );
           return;
         }
