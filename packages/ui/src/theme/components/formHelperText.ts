@@ -7,6 +7,7 @@ export const MuiFormHelperText: ThemeComponents["MuiFormHelperText"] = {
         fontSize: 11,
         fontWeight: 600,
         color: COLORS.GRAY_4,
+        whiteSpace: "pre-line",
         mt: 2,
         ml: 12,
         [theme.breakpoints.up("laptop")]: {
