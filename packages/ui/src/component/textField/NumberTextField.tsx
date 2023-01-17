@@ -11,7 +11,6 @@ export type NumberTextFieldProps = Omit<TextFieldProps, "type" | "value"> & {
 };
 
 export const NumberTextField = ({
-  onKeyDown,
   showUnit,
   helperText,
   value,
@@ -21,16 +20,10 @@ export const NumberTextField = ({
   ...restProps
 }: NumberTextFieldProps) => (
   <TextField
-    type="number"
-    onKeyDown={(event) => {
-      if (["e", "E", "+", "-"].includes(event.key)) {
-        event.preventDefault();
-      }
-      onKeyDown?.(event);
-    }}
     value={pipe(
       value,
-      O.fromPredicate((v) => v !== undefined),
+      O.fromNullable,
+      O.map((v) => v.toLocaleString()),
       O.matchW(
         () => "",
         (v) => v
@@ -41,7 +34,8 @@ export const NumberTextField = ({
         if (onNumberChange) {
           pipe(
             event.target.value,
-            O.fromPredicate((v) => !!v),
+            O.fromNullable,
+            O.map((v) => v.replace(/,/g, "")),
             O.map(Number),
             O.toUndefined,
             O.fromPredicate((v) => v === undefined || !Number.isNaN(v)),

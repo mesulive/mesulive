@@ -1,5 +1,5 @@
-import { pipe } from "fp-ts/function";
 import { option } from "fp-ts";
+import { pipe } from "fp-ts/function";
 
 export const putUnit = (n: number) => {
   if (n === 0) {
@@ -9,6 +9,7 @@ export const putUnit = (n: number) => {
   let i;
   const isMinus = n < 0;
   const inputNumber = n < 0 ? -n : n;
+  const unsafe = n > Number.MAX_SAFE_INTEGER;
   const unitWords = ["", "만 ", "억 ", "조 ", "경 ", "해 ", "자 "];
   const splitUnit = 10000;
   const splitCount = unitWords.length;
@@ -21,12 +22,20 @@ export const putUnit = (n: number) => {
     resultArray[i] = unitResult;
   }
 
-  for (i = 0; i < resultArray.length; i++) {
-    if (resultArray[i] === 0) continue;
-    resultString = String(resultArray[i]) + unitWords[i] + resultString;
+  let largestUnitIndex = 0;
+  for (i = resultArray.length - 1; i >= 0; i--) {
+    if (resultArray[i] === 0 || (unsafe && i <= largestUnitIndex - 2)) continue;
+    if (!largestUnitIndex) {
+      largestUnitIndex = i;
+    }
+    resultString += String(resultArray[i]) + unitWords[i];
   }
 
-  return `${isMinus ? "-" : ""}${resultString}`;
+  if (resultString.slice(-1)[0] === " ") {
+    resultString = resultString.slice(0, -1);
+  }
+
+  return `${unsafe ? "약 " : ""}${isMinus ? "-" : ""}${resultString}`;
 };
 
 export const floorNullableNumber = (num: number | undefined) =>
