@@ -36,6 +36,7 @@ export const NumberTextField = ({
             event.target.value,
             O.fromNullable,
             O.map((v) => v.replace(/,/g, "")),
+            O.filter((v) => !!v),
             O.map(Number),
             O.toUndefined,
             O.fromPredicate((v) => v === undefined || !Number.isNaN(v)),
