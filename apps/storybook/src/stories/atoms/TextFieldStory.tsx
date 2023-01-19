@@ -20,7 +20,7 @@ export interface TextFieldStoryProps {
 
 export const TextFieldStory = ({
   label,
-  helperText = EMPTY_TEXT,
+  helperText,
   startAdornment = "상위",
   endAdornment = "메소",
   error,
