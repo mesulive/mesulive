@@ -9,7 +9,7 @@ import { WeaponGradeSelect } from "~/components/flame/calc/setting/WeaponGradeSe
 
 export const SettingSection = () => {
   return (
-    <SectionBox gap={16}>
+    <SectionBox>
       <SectionTitle>설정</SectionTitle>
       <Box sx={styles.inputContainer}>
         <EquipTypeSelect />

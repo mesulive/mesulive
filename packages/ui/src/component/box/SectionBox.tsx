@@ -1,7 +1,11 @@
 import { mergeStyles } from "../../lib";
 import { Flex, FlexProps } from "./Flex";
 
-export const SectionBox = ({ sx: sxProp, ...restProps }: FlexProps) => (
+export const SectionBox = ({
+  sx: sxProp,
+  gap = 16,
+  ...restProps
+}: FlexProps) => (
   <Flex
     sx={mergeStyles(
       {
@@ -12,6 +16,7 @@ export const SectionBox = ({ sx: sxProp, ...restProps }: FlexProps) => (
       },
       sxProp
     )}
+    gap={gap}
     {...restProps}
   />
 );
