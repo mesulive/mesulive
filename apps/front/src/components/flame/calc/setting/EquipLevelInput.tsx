@@ -31,6 +31,7 @@ export const EquipLevelInput = () => {
       helperText={
         equipLevelError || (inputUnfilled && "장비 레벨을 입력해주세요")
       }
+      max={999}
     />
   );
 };
