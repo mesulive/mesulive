@@ -11,11 +11,6 @@ export namespace FlameState {
     default: "NON_WEAPON",
   });
 
-  export const methodsAtom = atom<Flame.Method[]>({
-    key: "flame/methodsAtom",
-    default: [],
-  });
-
   export const equipLevelAtom = atom<number | undefined>({
     key: "flame/equipLevelAtom",
     default: undefined,
@@ -79,13 +74,5 @@ export namespace FlameState {
       pipe(get(ProfileState.profileAtoms("")), (v) =>
         values(PrimaryStat.enum).every((stat) => v[stat] === undefined)
       ),
-  });
-
-  export const inputUnfilledSelector = selector<boolean>({
-    key: "flame/inputUnfilledSelector",
-    get: ({ get }) =>
-      [methodsAtom].some((atom) => !get(atom).length) ||
-      [equipLevelAtom, aimStatAtom].some((atom) => get(atom) === undefined) ||
-      get(statEfficiencyUnfilledSelector),
   });
 }

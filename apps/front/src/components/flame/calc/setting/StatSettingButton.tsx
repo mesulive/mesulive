@@ -1,10 +1,8 @@
 import { COLORS, Flex, ScreenType } from "@mesulive/ui";
-import { Button, Typography } from "@mui/material";
-import { useSelector } from "@xstate/react";
+import { Button } from "@mui/material";
 import Color from "color";
 import { throttle } from "lodash";
-import { useContext, useEffect, useMemo, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useContext, useEffect, useState } from "react";
 import {
   ModalActionContext,
   withPopoverProvider,
@@ -13,35 +11,17 @@ import {
   StatSettingDialog,
   StatSettingPopover,
 } from "~/components/flame/calc/setting/StatSettingModal";
-import { FlameState } from "~/lib/flame/states";
-import { FlowContext } from "~/lib/flow/flowProvider";
-import { FlowMachineState } from "~/lib/flow/machine";
 import { useRefCallback } from "~/lib/hooks/ref";
 import { useScreenType } from "~/lib/hooks/window";
 
 export const StatSettingButton = withPopoverProvider(() => {
   const { openModal } = useContext(ModalActionContext);
-  const isInputUnfilledState = useSelector(
-    useContext(FlowContext).service,
-    (state) => state.matches(FlowMachineState.enum.inputUnfilled)
-  );
-  const statEfficiencyUnfilled = useRecoilValue(
-    FlameState.statEfficiencyUnfilledSelector
-  );
   const [width, setWidth] = useState<number | undefined>(undefined);
   const [buttonRef, setButtonRef] = useRefCallback<HTMLButtonElement>();
 
   const screenType = useScreenType();
 
-  const inputUnfilled = useMemo(
-    () => isInputUnfilledState && statEfficiencyUnfilled,
-    [isInputUnfilledState, statEfficiencyUnfilled]
-  );
-
-  const backgroundColor = useMemo(
-    () => (inputUnfilled ? COLORS.ERROR : COLORS.MAIN_LIGHT),
-    [inputUnfilled]
-  );
+  const backgroundColor = COLORS.MAIN_LIGHT;
 
   useEffect(() => {
     const event = throttle(() => {
@@ -75,20 +55,6 @@ export const StatSettingButton = withPopoverProvider(() => {
       >
         스탯 효율 입력
       </Button>
-      {inputUnfilled && (
-        <Typography
-          sx={{
-            width: "100%",
-            textAlign: "center",
-            fontSize: 11,
-            fontWeight: 700,
-            color: COLORS.ERROR,
-            mt: 2,
-          }}
-        >
-          스탯 효율을 입력해주세요.
-        </Typography>
-      )}
       {screenType >= ScreenType.laptop ? (
         <StatSettingPopover
           disablePortal
