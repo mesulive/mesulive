@@ -2,7 +2,7 @@ import { Flex, PageTitle } from "@mesulive/ui";
 import { Box } from "@mui/material";
 import { GlobalProvider } from "~/components/common/context/GlobalProvider";
 import { MultiProvider } from "~/components/common/context/MultiProvider";
-import { SettingSection } from "~/components/flame/calc/setting/SettingSection";
+import { SettingSection } from "~/components/flame/calc/setting";
 import { Flame } from "~/lib/flame";
 import { FlowProvider } from "~/lib/flow/flowProvider";
 
