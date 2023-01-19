@@ -1,4 +1,3 @@
-import { EMPTY_TEXT } from "@mesulive/shared";
 import { floorNullableNumber } from "@mesulive/shared/src/number";
 import { NumberTextField } from "@mesulive/ui";
 import { useSelector } from "@xstate/react";
@@ -30,9 +29,7 @@ export const EquipLevelInput = () => {
       onNumberChange={flow(floorNullableNumber, setEquipLevel)}
       error={!!equipLevelError || inputUnfilled}
       helperText={
-        equipLevelError ||
-        (inputUnfilled && "장비 레벨을 입력해주세요") ||
-        EMPTY_TEXT
+        equipLevelError || (inputUnfilled && "장비 레벨을 입력해주세요")
       }
     />
   );

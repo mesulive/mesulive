@@ -4,9 +4,8 @@ import { AimStatInput } from "~/components/flame/calc/setting/AimStatInput";
 import { BossDropCheckbox } from "~/components/flame/calc/setting/BossDropCheckbox";
 import { EquipLevelInput } from "~/components/flame/calc/setting/EquipLevelInput";
 import { EquipTypeSelect } from "~/components/flame/calc/setting/EquipTypeSelect";
-import { MethodSelect } from "~/components/flame/calc/setting/MethodSelect";
-import { WeaponGradeSelect } from "~/components/flame/calc/setting/WeaponGradeSelect";
 import { StatSettingButton } from "~/components/flame/calc/setting/StatSettingButton";
+import { WeaponGradeSelect } from "~/components/flame/calc/setting/WeaponGradeSelect";
 
 export const SettingSection = () => {
   return (
@@ -16,11 +15,10 @@ export const SettingSection = () => {
         <EquipTypeSelect />
         <BossDropCheckbox />
         <EquipLevelInput />
-        <MethodSelect />
         <WeaponGradeSelect />
         <AimStatInput />
-        <StatSettingButton />
       </Box>
+      <StatSettingButton />
     </SectionBox>
   );
 };
