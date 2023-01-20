@@ -2,18 +2,13 @@ import { values } from "@mesulive/shared";
 import { pipe } from "fp-ts/function";
 import { atom, selector } from "recoil";
 import { Flame } from "~/lib/flame/index";
-import { PrimaryStat, WeaponType } from "~/lib/maple/types";
+import { PrimaryStat } from "~/lib/maple/types";
 import { ProfileState } from "~/lib/profile/states";
 
 export namespace FlameState {
   export const equipTypeAtom = atom<Flame.EquipType>({
     key: "flame/equipTypeAtom",
     default: "NON_WEAPON",
-  });
-
-  export const weaponTypeAtom = atom<WeaponType>({
-    key: "flame/weaponTypeAtom",
-    default: "한손검",
   });
 
   export const equipLevelAtom = atom<number | undefined>({
