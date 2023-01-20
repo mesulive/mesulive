@@ -6,12 +6,17 @@ export const MuiCheckbox: ThemeComponents["MuiCheckbox"] = {
       padding: 0,
       color: COLORS.GRAY_3,
 
+      // formControlLabel에서 설정 불가능
       "&.Mui-checked": {
         "~ .MuiFormControlLabel-label": {
           color: COLORS.MAIN,
         },
-        span: {
-          color: COLORS.MAIN,
+      },
+
+      "&.Mui-disabled": {
+        color: COLORS.MAIN_LIGHT,
+        "~ .MuiFormControlLabel-label": {
+          color: COLORS.MAIN_LIGHT,
         },
       },
 
