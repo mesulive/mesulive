@@ -1,5 +1,11 @@
 import { values } from "@mesulive/shared";
-import { Box, Dialog, Popover, PopoverProps } from "@mui/material";
+import {
+  Box,
+  Dialog,
+  DialogContent,
+  Popover,
+  PopoverProps,
+} from "@mui/material";
 import { useContext } from "react";
 import {
   ModalActionContext,
@@ -41,16 +47,10 @@ export const StatSettingDialog = () => {
   const { open } = useContext(ModalValueContext);
 
   return (
-    <Dialog
-      open={open}
-      onClose={closeModal}
-      sx={{
-        "& .MuiDialog-paper": {
-          p: 24,
-        },
-      }}
-    >
-      <StatSettingContent />
+    <Dialog open={open} onClose={closeModal}>
+      <DialogContent>
+        <StatSettingContent />
+      </DialogContent>
     </Dialog>
   );
 };

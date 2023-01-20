@@ -1,4 +1,3 @@
-import { pxArray } from "@mesulive/shared";
 import { ThemeComponents } from "../../lib";
 
 export const MuiDialogContent: ThemeComponents["MuiDialogContent"] = {
@@ -6,9 +5,11 @@ export const MuiDialogContent: ThemeComponents["MuiDialogContent"] = {
     root: ({ theme }) =>
       theme.unstable_sx({
         fontSize: 12,
+        p: 16,
+        overFlowY: "overlay",
 
         ".MuiDialogTitle-root + &": {
-          p: pxArray(16, 0),
+          p: 16,
         },
 
         ".MuiTypography-root": {
