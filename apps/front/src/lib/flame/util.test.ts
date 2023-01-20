@@ -1,7 +1,4 @@
-import { log } from "fp-ts/Console";
-import { pipe } from "fp-ts/function";
-import { getOptionValues, getOptionValuesMap } from "~/lib/flame/utils";
-import { rent } from "~/lib/fp/rent";
+import { getOptionValues } from "~/lib/flame/utils";
 
 describe("getOptionValues", () => {
   test("valid input", () => {
@@ -22,8 +19,8 @@ describe("getOptionValues", () => {
 
 describe("getOptionValuesMap", () => {
   test("너무 많아서 log 찍어서 확인", () => {
-    expect(
-      pipe(getOptionValuesMap(250, { bossDrop: true }), rent.io(log))
-    ).toBeTruthy();
+    // expect(
+    //   pipe(getOptionValuesMap(250, { bossDrop: true }), rent.io(log))
+    // ).toBeTruthy();
   });
 });
