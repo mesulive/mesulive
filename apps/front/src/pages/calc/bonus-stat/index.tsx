@@ -1,6 +1,6 @@
 import { Flex, PageTitle } from "@mesulive/ui";
 import { Box } from "@mui/material";
-import { ResultSection } from "~/components/bonus-stat/calc/result/ResultSection";
+import { ResultSection } from "~/components/bonus-stat/calc/result";
 import { SettingSection } from "~/components/bonus-stat/calc/setting";
 import { GlobalProvider } from "~/components/common/context/GlobalProvider";
 import { MultiProvider } from "~/components/common/context/MultiProvider";
