@@ -16,7 +16,8 @@ import { PrimaryStat } from "~/lib/maple/types";
 
 // TODO ProfileButton 사용하게 되면 이 파일 삭제
 
-interface Props extends Omit<PopoverProps, "open" | "anchorEl" | "onClose"> {}
+interface StatSettingPopoverProps
+  extends Omit<PopoverProps, "open" | "anchorEl" | "onClose"> {}
 
 export const StatSettingContent = () => (
   <Box
@@ -32,7 +33,7 @@ export const StatSettingContent = () => (
   </Box>
 );
 
-export const StatSettingPopover = ({ ...props }: Props) => {
+export const StatSettingPopover = ({ ...props }: StatSettingPopoverProps) => {
   const { closeModal } = useContext(ModalActionContext);
   const { open, anchorEl } = useContext(ModalValueContext);
   return (
