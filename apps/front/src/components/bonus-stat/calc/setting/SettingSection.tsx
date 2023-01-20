@@ -1,11 +1,11 @@
 import { SectionBox, SectionTitle, sx } from "@mesulive/ui";
 import { Box } from "@mui/material";
-import { AimStatInput } from "~/components/flame/calc/setting/AimStatInput";
-import { BossDropCheckbox } from "~/components/flame/calc/setting/BossDropCheckbox";
-import { EquipLevelInput } from "~/components/flame/calc/setting/EquipLevelInput";
-import { EquipTypeSelect } from "~/components/flame/calc/setting/EquipTypeSelect";
-import { StatSettingButton } from "~/components/flame/calc/setting/StatSettingButton";
-import { WeaponGradeSelect } from "~/components/flame/calc/setting/WeaponGradeSelect";
+import { AimStatInput } from "~/components/bonus-stat/calc/setting/AimStatInput";
+import { BossDropCheckbox } from "~/components/bonus-stat/calc/setting/BossDropCheckbox";
+import { EquipLevelInput } from "~/components/bonus-stat/calc/setting/EquipLevelInput";
+import { EquipTypeSelect } from "~/components/bonus-stat/calc/setting/EquipTypeSelect";
+import { StatSettingButton } from "~/components/bonus-stat/calc/setting/StatSettingButton";
+import { WeaponGradeSelect } from "~/components/bonus-stat/calc/setting/WeaponGradeSelect";
 
 export const SettingSection = () => {
   return (

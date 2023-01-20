@@ -1,23 +1,23 @@
 import { values } from "@mesulive/shared";
 import { pipe } from "fp-ts/function";
 import { atom, selector } from "recoil";
-import { Flame } from "~/lib/flame/index";
+import { BonusStat } from "~/lib/bonus-stat/index";
 import { PrimaryStat } from "~/lib/maple/types";
 import { ProfileState } from "~/lib/profile/states";
 
-export namespace FlameState {
-  export const equipTypeAtom = atom<Flame.EquipType>({
-    key: "flame/equipTypeAtom",
+export namespace BonusStatState {
+  export const equipTypeAtom = atom<BonusStat.EquipType>({
+    key: "bonus-stat/equipTypeAtom",
     default: "NON_WEAPON",
   });
 
   export const equipLevelAtom = atom<number | undefined>({
-    key: "flame/equipLevelAtom",
+    key: "bonus-stat/equipLevelAtom",
     default: undefined,
   });
 
   export const equipLevelErrorSelector = selector<string>({
-    key: "flame/equipLevelInvalidSelector",
+    key: "bonus-stat/equipLevelInvalidSelector",
     get: ({ get }) => {
       const equipLevel = get(equipLevelAtom);
 
@@ -30,17 +30,17 @@ export namespace FlameState {
   });
 
   export const bossDropAtom = atom<boolean>({
-    key: "flame/bossDrop",
+    key: "bonus-stat/bossDrop",
     default: false,
   });
 
   export const aimStatAtom = atom<number | undefined>({
-    key: "flame/aimStatAtom",
+    key: "bonus-stat/aimStatAtom",
     default: undefined,
   });
 
   export const aimStatHelperTextSelector = selector<string>({
-    key: "flame/aimStatHelperTextAtom",
+    key: "bonus-stat/aimStatHelperTextAtom",
     get: ({ get }) => {
       if (get(equipTypeAtom) === "WEAPON") {
         return "무기 추옵에 대한 환산 스탯은 제외됩니다.";
@@ -51,7 +51,7 @@ export namespace FlameState {
   });
 
   export const aimStatErrorSelector = selector<string>({
-    key: "flame/aimStatInvalidSelector",
+    key: "bonus-stat/aimStatInvalidSelector",
     get: ({ get }) => {
       const aimStat = get(aimStatAtom);
 
@@ -63,13 +63,13 @@ export namespace FlameState {
   });
 
   export const weaponGradeAtom = atom<number>({
-    key: "flame/weaponGradeAtom",
+    key: "bonus-stat/weaponGradeAtom",
     default: 0,
   });
 
   // TODO 임시 state. ProfileButton 표시하게 되면 삭제
   export const statEfficiencyUnfilledSelector = selector<boolean>({
-    key: "flame/statEfficiencyUnfilledSelector",
+    key: "bonus-stat/statEfficiencyUnfilledSelector",
     get: ({ get }) =>
       pipe(get(ProfileState.profileAtoms("")), (v) =>
         values(PrimaryStat.enum).every((stat) => v[stat] === undefined)

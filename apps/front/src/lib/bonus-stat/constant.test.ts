@@ -1,6 +1,6 @@
 import { values } from "lodash";
-import { MethodProbTable } from "~/lib/flame/constant";
-import { Method } from "~/lib/flame/types";
+import { MethodProbTable } from "~/lib/bonus-stat/constant";
+import { Method } from "~/lib/bonus-stat/types";
 
 describe("MethodProbTable", () => {
   test("확률의 합은 1", () => {

@@ -1,13 +1,15 @@
 import { values } from "@mesulive/shared";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useRecoilState } from "recoil";
-import { Flame } from "~/lib/flame";
-import { FlameState } from "~/lib/flame/states";
+import { BonusStat } from "~/lib/bonus-stat";
+import { BonusStatState } from "~/lib/bonus-stat/states";
 
 const LABEL = "장비 종류";
 
 export const EquipTypeSelect = () => {
-  const [equipType, setEquipType] = useRecoilState(FlameState.equipTypeAtom);
+  const [equipType, setEquipType] = useRecoilState(
+    BonusStatState.equipTypeAtom
+  );
 
   return (
     <FormControl>
@@ -16,14 +18,14 @@ export const EquipTypeSelect = () => {
         label={LABEL}
         value={equipType}
         onChange={({ target: { value } }) => {
-          if (Flame.isEquipType(value)) {
+          if (BonusStat.isEquipType(value)) {
             setEquipType(value);
           }
         }}
       >
-        {values(Flame.EquipType.enum).map((equipType) => (
+        {values(BonusStat.EquipType.enum).map((equipType) => (
           <MenuItem value={equipType} key={equipType}>
-            {Flame.EquipTypeInfoMap[equipType].text}
+            {BonusStat.EquipTypeInfoMap[equipType].text}
           </MenuItem>
         ))}
       </Select>

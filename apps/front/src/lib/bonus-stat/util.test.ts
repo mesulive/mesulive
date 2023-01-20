@@ -1,4 +1,4 @@
-import { getOptionValues } from "~/lib/flame/utils";
+import { getOptionValues } from "~/lib/bonus-stat/utils";
 
 describe("getOptionValues", () => {
   test("valid input", () => {

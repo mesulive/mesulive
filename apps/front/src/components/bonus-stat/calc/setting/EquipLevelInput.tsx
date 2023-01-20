@@ -2,11 +2,15 @@ import { floorNullableNumber } from "@mesulive/shared/src/number";
 import { NumberTextField } from "@mesulive/ui";
 import { flow } from "fp-ts/function";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { FlameState } from "~/lib/flame/states";
+import { BonusStatState } from "~/lib/bonus-stat/states";
 
 export const EquipLevelInput = () => {
-  const [equipLevel, setEquipLevel] = useRecoilState(FlameState.equipLevelAtom);
-  const equipLevelError = useRecoilValue(FlameState.equipLevelErrorSelector);
+  const [equipLevel, setEquipLevel] = useRecoilState(
+    BonusStatState.equipLevelAtom
+  );
+  const equipLevelError = useRecoilValue(
+    BonusStatState.equipLevelErrorSelector
+  );
 
   return (
     <NumberTextField

@@ -63,8 +63,8 @@ const NavigationDrawer = forwardRef<HTMLDivElement, NavigationDrawerProps>(
       >
         <Box component="nav">
           <GroupTypography>기댓값 계산기</GroupTypography>
-          <NavLink href="/calc/flame" icon={Flame} sx={{ mt: 16 }}>
-            환생의 불꽃
+          <NavLink href="/calc/bonus-stat" icon={Flame} sx={{ mt: 16 }}>
+            추가옵션
           </NavLink>
           <NavLink
             href="/calc/cube"

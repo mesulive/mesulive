@@ -1,16 +1,16 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { FlameState } from "~/lib/flame/states";
+import { BonusStatState } from "~/lib/bonus-stat/states";
 
 const LABEL = "무기 추옵 등급";
 
 export const WeaponGradeSelect = () => {
-  const equipType = useRecoilValue(FlameState.equipTypeAtom);
+  const equipType = useRecoilValue(BonusStatState.equipTypeAtom);
   const [weaponGrade, setWeaponGrade] = useRecoilState(
-    FlameState.weaponGradeAtom
+    BonusStatState.weaponGradeAtom
   );
-  const bossDrop = useRecoilValue(FlameState.bossDropAtom);
+  const bossDrop = useRecoilValue(BonusStatState.bossDropAtom);
 
   useEffect(() => {
     if (bossDrop && weaponGrade >= 6) {

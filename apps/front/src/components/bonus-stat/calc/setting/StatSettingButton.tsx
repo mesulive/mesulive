@@ -4,13 +4,13 @@ import Color from "color";
 import { throttle } from "lodash";
 import { useContext, useEffect, useState } from "react";
 import {
+  StatSettingDialog,
+  StatSettingPopover,
+} from "~/components/bonus-stat/calc/setting/StatSettingModal";
+import {
   ModalActionContext,
   withPopoverProvider,
 } from "~/components/common/context/ModalProvider";
-import {
-  StatSettingDialog,
-  StatSettingPopover,
-} from "~/components/flame/calc/setting/StatSettingModal";
 import { useRefCallback } from "~/lib/hooks/ref";
 import { useScreenType } from "~/lib/hooks/window";
 

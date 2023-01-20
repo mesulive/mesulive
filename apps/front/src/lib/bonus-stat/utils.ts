@@ -6,7 +6,7 @@ import {
   AdditionalOptionValues,
   isAdditionalOptionValues,
   Option,
-} from "~/lib/flame/types";
+} from "~/lib/bonus-stat/types";
 
 export const getOptionValues =
   (level: number, condition?: { bossDrop?: boolean }) =>

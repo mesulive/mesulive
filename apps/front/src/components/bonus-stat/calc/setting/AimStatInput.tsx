@@ -1,13 +1,13 @@
 import { NumberTextField } from "@mesulive/ui";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { FlameState } from "~/lib/flame/states";
+import { BonusStatState } from "~/lib/bonus-stat/states";
 
 export const AimStatInput = () => {
-  const [aimStat, setAimStat] = useRecoilState(FlameState.aimStatAtom);
+  const [aimStat, setAimStat] = useRecoilState(BonusStatState.aimStatAtom);
   const aimStatHelperText = useRecoilValue(
-    FlameState.aimStatHelperTextSelector
+    BonusStatState.aimStatHelperTextSelector
   );
-  const aimStatError = useRecoilValue(FlameState.aimStatErrorSelector);
+  const aimStatError = useRecoilValue(BonusStatState.aimStatErrorSelector);
 
   return (
     <NumberTextField

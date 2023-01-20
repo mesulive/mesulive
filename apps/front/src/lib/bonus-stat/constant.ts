@@ -1,6 +1,6 @@
-import { AdditionalOptionValues, Method } from "~/lib/flame/types";
+import { AdditionalOptionValues, Method } from "~/lib/bonus-stat/types";
 
-export const PAGE_KEY = "calc/flame";
+export const PAGE_KEY = "calc/bonus-stat";
 
 export const MethodProbTable: Record<Method, AdditionalOptionValues> = {
   POWERFUL: [0.2, 0.3, 0.36, 0.14, 0],

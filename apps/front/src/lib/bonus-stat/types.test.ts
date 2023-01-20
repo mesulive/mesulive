@@ -1,11 +1,11 @@
 import { values } from "lodash";
-import { Flame } from "~/lib/flame/index";
-import { Option } from "~/lib/flame/types";
+import { BonusStat } from "~/lib/bonus-stat/index";
+import { Option } from "~/lib/bonus-stat/types";
 
 describe("isAdditionalOptionValues", () => {
   test("array도 parsing 가능?", () => {
-    expect(Flame.isAdditionalOptionValues([1, 2, 3, 4, 5])).toBe(true);
-    expect(Flame.isAdditionalOptionValues([1, 2, 3, 4, 5, 6])).toBe(false);
+    expect(BonusStat.isAdditionalOptionValues([1, 2, 3, 4, 5])).toBe(true);
+    expect(BonusStat.isAdditionalOptionValues([1, 2, 3, 4, 5, 6])).toBe(false);
   });
 });
 
