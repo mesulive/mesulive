@@ -5,7 +5,9 @@ export const MuiDialogTitle: ThemeComponents["MuiDialogTitle"] = {
     root: ({ theme }) =>
       theme.unstable_sx({
         color: COLORS.MAIN,
-        textAlign: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         fontWeight: "bold",
         fontSize: 18,
         p: 0,

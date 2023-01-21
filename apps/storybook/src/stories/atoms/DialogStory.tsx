@@ -1,9 +1,9 @@
+import { DialogTitleWithCloseButton } from "@mesulive/ui";
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
   Typography,
 } from "@mui/material";
 
@@ -14,7 +14,7 @@ export interface DialogStoryProps {
 
 export const DialogStory = ({ title, description }: DialogStoryProps) => (
   <Dialog open>
-    <DialogTitle>{title}</DialogTitle>
+    <DialogTitleWithCloseButton>{title}</DialogTitleWithCloseButton>
     <DialogContent>
       <Typography sx={{ whiteSpace: "pre-line" }}>{description}</Typography>
     </DialogContent>

@@ -1,4 +1,5 @@
 import { values } from "@mesulive/shared";
+import { DialogTitleWithCloseButton } from "@mesulive/ui";
 import {
   Box,
   Dialog,
@@ -49,6 +50,9 @@ export const StatSettingDialog = () => {
 
   return (
     <Dialog open={open} onClose={closeModal}>
+      <DialogTitleWithCloseButton onClose={closeModal}>
+        스탯 효율
+      </DialogTitleWithCloseButton>
       <DialogContent>
         <StatSettingContent />
       </DialogContent>

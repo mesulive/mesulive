@@ -1,6 +1,6 @@
 {
   "extends": "@mesulive/tsconfig/nextjs.json",
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "../../packages/ui"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "baseUrl": ".",

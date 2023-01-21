@@ -1,6 +1,12 @@
 import { PaletteOptions } from "@mui/material";
 import { COLORS } from "../lib";
 
+declare module "@mui/material" {
+  interface Color {
+    main?: string;
+  }
+}
+
 export const palette: PaletteOptions = {
   primary: {
     main: COLORS.MAIN,
@@ -14,6 +20,7 @@ export const palette: PaletteOptions = {
     main: COLORS.ERROR,
   },
   grey: {
+    main: COLORS.GRAY_3,
     900: "#212121",
     800: "#3B3B3B",
     700: "#505050",

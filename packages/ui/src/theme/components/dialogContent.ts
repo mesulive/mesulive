@@ -6,7 +6,7 @@ export const MuiDialogContent: ThemeComponents["MuiDialogContent"] = {
       theme.unstable_sx({
         fontSize: 12,
         p: 16,
-        overFlowY: "overlay",
+        overflowY: "overlay",
 
         ".MuiDialogTitle-root + &": {
           p: 16,
