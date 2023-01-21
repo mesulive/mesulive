@@ -1,9 +1,9 @@
 import { option as O } from "fp-ts";
 import { pipe } from "fp-ts/function";
 import { values } from "lodash";
-import { z } from "zod";
 import {
   AdditionalOptionValues,
+  AdditionalOptionValuesMap,
   isAdditionalOptionValues,
   Option,
 } from "~/lib/bonus-stat/types";
@@ -75,12 +75,6 @@ export const getOptionValues =
       O.filter(isAdditionalOptionValues),
       O.getOrElse(() => [0, 0, 0, 0, 0])
     );
-
-export const AdditionalOptionValuesMap = z.map(Option, AdditionalOptionValues);
-
-export type AdditionalOptionValuesMap = z.infer<
-  typeof AdditionalOptionValuesMap
->;
 
 export const getOptionValuesMap = (
   level: number,

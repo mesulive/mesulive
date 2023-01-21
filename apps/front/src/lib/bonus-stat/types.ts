@@ -101,3 +101,8 @@ export const OptionStatMap: Record<Option, PrimaryStat[]> = {
   DAMAGE_OR_JUMP: ["DAMAGE"],
   "ALL %": ["ALL %"],
 };
+export const AdditionalOptionValuesMap = z.map(Option, AdditionalOptionValues);
+
+export type AdditionalOptionValuesMap = z.infer<
+  typeof AdditionalOptionValuesMap
+>;
