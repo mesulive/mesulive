@@ -1,7 +1,7 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { BonusStatState } from "~/lib/bonus-stat/states";
+import { BonusStatState } from "~/lib/bonus-stat/state";
 
 const LABEL = "무기 추옵 등급";
 

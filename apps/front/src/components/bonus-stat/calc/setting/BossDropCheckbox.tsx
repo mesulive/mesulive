@@ -1,6 +1,6 @@
 import { Checkbox, FormControlLabel } from "@mui/material";
 import { useRecoilState } from "recoil";
-import { BonusStatState } from "~/lib/bonus-stat/states";
+import { BonusStatState } from "~/lib/bonus-stat/state";
 
 export const BossDropCheckbox = () => {
   const [bossDrop, setBossDrop] = useRecoilState(BonusStatState.bossDropAtom);

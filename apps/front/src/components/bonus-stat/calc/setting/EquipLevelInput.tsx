@@ -2,7 +2,7 @@ import { floorNullableNumber } from "@mesulive/shared/src/number";
 import { NumberTextField } from "@mesulive/ui";
 import { flow } from "fp-ts/function";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { BonusStatState } from "~/lib/bonus-stat/states";
+import { BonusStatState } from "~/lib/bonus-stat/state";
 
 export const EquipLevelInput = () => {
   const [equipLevel, setEquipLevel] = useRecoilState(

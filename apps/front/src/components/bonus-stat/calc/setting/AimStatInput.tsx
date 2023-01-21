@@ -1,6 +1,6 @@
 import { NumberTextField } from "@mesulive/ui";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { BonusStatState } from "~/lib/bonus-stat/states";
+import { BonusStatState } from "~/lib/bonus-stat/state";
 
 export const AimStatInput = () => {
   const [aimStat, setAimStat] = useRecoilState(BonusStatState.aimStatAtom);
