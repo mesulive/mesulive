@@ -1,9 +1,9 @@
-import { COLORS } from "@mesulive/ui";
-import { Box } from "@mui/material";
+import { COLORS, Flex } from "@mesulive/ui";
 import { PropsWithChildren } from "react";
 import { useRecoilValue } from "recoil";
 import { Header } from "~/components/common/header";
 import { HEADER_HEIGHT } from "~/components/common/header/constant";
+import { LAYOUT_PADDING } from "~/components/common/layout/constant";
 import { Navigation } from "~/components/common/navigation";
 import {
   NAVIGATION_TOGGLE_DURATION,
@@ -18,11 +18,11 @@ const Layout = ({ children }: PropsWithChildren) => {
     <>
       <Header />
       <Navigation />
-      <Box
+      <Flex
         sx={(theme) => ({
           backgroundColor: COLORS.BACKGROUND,
           minHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
-          p: 16,
+          p: LAYOUT_PADDING,
           mt: HEADER_HEIGHT,
           transition: `margin-left ${NAVIGATION_TOGGLE_DURATION}ms cubic-bezier(0, 0, 0.2, 1) 0ms`, // Drawer transition strategy
 
@@ -36,9 +36,10 @@ const Layout = ({ children }: PropsWithChildren) => {
             }),
           },
         })}
+        align="center"
       >
         {children}
-      </Box>
+      </Flex>
     </>
   );
 };
