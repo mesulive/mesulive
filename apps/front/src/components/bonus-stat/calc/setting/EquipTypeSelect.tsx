@@ -1,5 +1,5 @@
-import { values } from "@mesulive/shared";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { values } from "lodash";
 import { useRecoilState } from "recoil";
 import { BonusStat } from "~/lib/bonus-stat";
 import { BonusStatState } from "~/lib/bonus-stat/state";

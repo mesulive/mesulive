@@ -1,2 +1,2 @@
-export const values = <T extends object = object>(obj: T) =>
-  Object.values(obj) as (keyof T)[];
+export const keys = <T extends object>(obj: T): (keyof T)[] =>
+  Object.keys(obj) as (keyof T)[];

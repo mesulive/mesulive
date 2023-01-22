@@ -1,5 +1,5 @@
-import { values } from "@mesulive/shared";
 import { pipe } from "fp-ts/function";
+import { values } from "lodash";
 import { atom, selector } from "recoil";
 import { BonusStat } from "~/lib/bonus-stat/index";
 import { PrimaryStat } from "~/lib/maple/types";
@@ -74,5 +74,17 @@ export namespace BonusStatState {
       pipe(get(ProfileState.profileAtoms("")), (v) =>
         values(PrimaryStat.enum).every((stat) => v[stat] === undefined)
       ),
+  });
+
+  export const inputsSelector = selector({
+    key: "bonus-stat/inputsSelector",
+    get: ({ get }) => ({
+      level: get(equipLevelAtom),
+      equipType: get(equipTypeAtom),
+      bossDrop: get(bossDropAtom),
+      statEfficiencyMap: get(ProfileState.profileAtoms("")),
+      aimStat: get(aimStatAtom),
+      weaponGrade: get(weaponGradeAtom),
+    }),
   });
 }

@@ -1,4 +1,4 @@
-import { values } from "@mesulive/shared";
+import { values } from "lodash";
 import { DialogTitleWithCloseButton } from "@mesulive/ui";
 import {
   Box,

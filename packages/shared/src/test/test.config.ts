@@ -12,7 +12,7 @@ const customRender = (
   options?: Omit<RenderOptions, "wrapper">
 ) => render(ui, { wrapper: TestProvider, ...options });
 
-const customRenderHook = <Props, Result>(
+const customRenderHook = <Result, Props>(
   hook: (initialProps: Props) => Result,
   options?: Omit<RenderHookOptions<Props>, "wrapper">
 ) => renderHook<Result, Props>(hook, { wrapper: TestProvider, ...options });

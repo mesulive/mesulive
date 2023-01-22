@@ -13,7 +13,7 @@ export const WeaponGradeSelect = () => {
   const bossDrop = useRecoilValue(BonusStatState.bossDropAtom);
 
   useEffect(() => {
-    if (bossDrop && weaponGrade >= 6) {
+    if (!bossDrop && weaponGrade >= 6) {
       setWeaponGrade(0);
     }
   }, [bossDrop, setWeaponGrade, weaponGrade]);
@@ -26,6 +26,7 @@ export const WeaponGradeSelect = () => {
         value={weaponGrade}
         onChange={({ target: { value } }) => {
           if (typeof value === "number") {
+            console.log(value);
             if (value >= 0 && value <= 7) {
               setWeaponGrade(value);
               return;
@@ -33,13 +34,17 @@ export const WeaponGradeSelect = () => {
           }
         }}
       >
-        {[...new Array(bossDrop ? 6 : 8).fill(0).map((_, i) => i)].map(
-          (grade) => (
-            <MenuItem key={grade} value={grade}>
-              {grade ? `${grade}추` : "선택안함"}
-            </MenuItem>
-          )
-        )}
+        {[
+          0,
+          ...new Array(5)
+            .fill(0)
+            .map((_, i) => i + 1 + (bossDrop ? 2 : 0))
+            .reverse(),
+        ].map((grade) => (
+          <MenuItem key={grade} value={grade}>
+            {grade ? `${8 - grade}추` : "선택안함"}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
   );

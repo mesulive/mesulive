@@ -5,7 +5,7 @@ import {
   ModalValueContext,
 } from "~/components/common/context/ModalProvider";
 import { PrimaryStat } from "~/lib/maple/types";
-import { values } from "@mesulive/shared";
+import { values } from "lodash";
 import { StatEfficiencyInput } from "~/components/common/header/profile/StatEfficiencyInput";
 
 export const ProfileSettingPopover = () => {

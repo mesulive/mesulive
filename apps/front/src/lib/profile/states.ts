@@ -1,4 +1,5 @@
-import { getRandomPastelColor, values } from "@mesulive/shared";
+import { getRandomPastelColor } from "@mesulive/shared";
+import { values } from "lodash";
 import { atom, atomFamily, DefaultValue, selectorFamily } from "recoil";
 import { PrimaryStat } from "~/lib/maple/types";
 import { localStorageEffect } from "~/lib/recoil/effect";

@@ -1,6 +1,7 @@
+import { option } from "fp-ts";
+import { pipe } from "fp-ts/function";
 import { values } from "lodash";
 import { z } from "zod";
-import { PrimaryStat } from "~/lib/maple/types";
 
 export const EquipType = z.enum(["NON_WEAPON", "WEAPON"]);
 export type EquipType = z.infer<typeof EquipType>;
@@ -56,7 +57,13 @@ export const OptionAvailableAtWeapon = z.enum([
   "BOSS_DAMAGE_OR_SPEED",
   "DAMAGE_OR_JUMP",
 ]);
+
 export type OptionAvailableAtWeapon = z.infer<typeof OptionAvailableAtWeapon>;
+
+export const isOptionAvailableAtWeapon = (
+  target: unknown
+): target is OptionAvailableAtWeapon =>
+  OptionAvailableAtWeapon.safeParse(target).success;
 
 export const Option = z.enum([
   "STR",
@@ -80,29 +87,22 @@ export const Option = z.enum([
 ]);
 export type Option = z.infer<typeof Option>;
 
-export const OptionStatMap: Record<Option, PrimaryStat[]> = {
-  STR: ["STR"],
-  DEX: ["DEX"],
-  INT: ["INT"],
-  LUK: ["LUK"],
-  "STR+DEX": ["STR", "DEX"],
-  "STR+INT": ["STR", "INT"],
-  "STR+LUK": ["STR", "LUK"],
-  "DEX+INT": ["DEX", "INT"],
-  "DEX+LUK": ["DEX", "LUK"],
-  "INT+LUK": ["INT", "LUK"],
-  HP: ["HP"],
-  MP: [],
-  LEVEL: [],
-  DEFENSE: [],
-  ATTACK: ["ATTACK"],
-  MAGIC_ATTACK: ["MAGIC_ATTACK"],
-  BOSS_DAMAGE_OR_SPEED: ["BOSS_DAMAGE"],
-  DAMAGE_OR_JUMP: ["DAMAGE"],
-  "ALL %": ["ALL %"],
-};
-export const AdditionalOptionValuesMap = z.map(Option, AdditionalOptionValues);
+export const AdditionalOptionValuesMap = z.record(
+  Option,
+  AdditionalOptionValues
+);
 
-export type AdditionalOptionValuesMap = z.infer<
-  typeof AdditionalOptionValuesMap
+export type AdditionalOptionValuesMap = Required<
+  z.infer<typeof AdditionalOptionValuesMap>
 >;
+
+export const isAdditionalOptionValuesMap = (
+  target: unknown
+): target is AdditionalOptionValuesMap =>
+  pipe(
+    target,
+    option.fromPredicate((v) => AdditionalOptionValuesMap.safeParse(v).success),
+    option.map(AdditionalOptionValuesMap.parse),
+    option.map((map) => values(Option.enum).every((op) => !!map[op])),
+    option.getOrElse(() => false)
+  );
