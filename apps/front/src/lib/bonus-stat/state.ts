@@ -31,7 +31,7 @@ export namespace BonusStatState {
 
   export const bossDropAtom = atom<boolean>({
     key: "bonus-stat/bossDrop",
-    default: false,
+    default: true,
   });
 
   export const aimStatAtom = atom<number | undefined>({
