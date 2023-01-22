@@ -1,7 +1,8 @@
 import { keys } from "@mesulive/shared";
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
+import { BonusStat } from "~/lib/bonus-stat";
 import { BonusStatState } from "~/lib/bonus-stat/state";
 import { Method } from "~/lib/bonus-stat/types";
 
@@ -11,6 +12,7 @@ export const Temp = () => {
   >(undefined);
   const workerRef = useRef<Worker>();
   const inputs = useRecoilValue(BonusStatState.inputsSelector);
+  const [loading, setLoading] = useState(false);
 
   const initWorker = useCallback(() => {
     workerRef.current = new Worker(
@@ -19,12 +21,13 @@ export const Temp = () => {
     workerRef.current.onmessage = (
       event: MessageEvent<Record<Method, number | undefined>>
     ) => {
-      console.log(event.data);
       setResult(event.data);
+      setLoading(false);
     };
   }, []);
 
   const startWorker = useCallback(() => {
+    setLoading(true);
     initWorker();
     workerRef.current?.postMessage(inputs);
   }, [initWorker, inputs]);
@@ -32,10 +35,6 @@ export const Temp = () => {
   const terminateWorker = useCallback(() => {
     workerRef.current?.terminate();
   }, []);
-
-  useEffect(() => {
-    return terminateWorker;
-  }, [initWorker, terminateWorker]);
 
   useEffect(() => {
     terminateWorker();
@@ -46,18 +45,17 @@ export const Temp = () => {
   return (
     <>
       <Typography sx={{ whiteSpace: "pre-line" }}>
-        {result
-          ? keys(result).map((key) => `${key}: ${result[key]?.toString()}\n`)
-          : "없엉"}
+        {loading
+          ? "로딩 중..."
+          : result && result.POWERFUL !== undefined
+          ? keys(result).map(
+              (key) =>
+                `${BonusStat.MethodInfoMap[key].text}: ${
+                  Math.floor((result[key] ?? 0) * 1000000) / 10000
+                }%\n`
+            )
+          : "값을 넣어주세요"}
       </Typography>
-      <Button
-        onClick={() => {
-          startWorker();
-        }}
-      >
-        시작
-      </Button>
-      <Button onClick={terminateWorker}>취소</Button>
     </>
   );
 };
