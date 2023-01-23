@@ -13,7 +13,7 @@ export const AimStatInput = () => {
     <NumberTextField
       value={aimStat}
       onNumberChange={setAimStat}
-      label="목표 환산 스탯"
+      label="목표 추가옵션 값"
       error={!!aimStatError}
       helperText={aimStatError || aimStatHelperText}
     />
