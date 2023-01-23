@@ -50,9 +50,10 @@ export const Temp = () => {
           : result && result.POWERFUL !== undefined
           ? keys(result).map(
               (key) =>
-                `${BonusStat.MethodInfoMap[key].text}: ${
-                  Math.floor((result[key] ?? 0) * 1000000) / 10000
-                }%\n`
+                `${BonusStat.MethodInfoMap[key].text}: ${(
+                  Math.floor((result[key] ?? 0) * 10 ** 14) /
+                  10 ** 12
+                ).toFixed(10)}%\n`
             )
           : "값을 넣어주세요"}
       </Typography>
