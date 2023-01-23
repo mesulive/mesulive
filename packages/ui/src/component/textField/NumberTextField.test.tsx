@@ -1,6 +1,6 @@
+import { fireEvent, render } from "@testing-library/react";
 import { useState } from "react";
 import { NumberTextField } from "./NumberTextField";
-import { fireEvent, render } from "@testing-library/react";
 
 const MAX = 999;
 
@@ -15,6 +15,7 @@ const NumberTextFieldContainer = () => {
         role: "input",
       }}
       max={MAX}
+      maxFractionDigits={2}
     />
   );
 };
@@ -51,5 +52,16 @@ describe("NumberTextField", () => {
     fireEvent.change(input, { target: { value: "10" } });
     fireEvent.change(input, { target: { value: `${MAX + 1}` } });
     expect(input.value).toBe("10");
+  });
+
+  test("소수점", () => {
+    fireEvent.change(input, { target: { value: "10." } });
+    expect(input.value).toBe("10.");
+
+    fireEvent.change(input, { target: { value: "10.12" } });
+    expect(input.value).toBe("10.12");
+
+    fireEvent.change(input, { target: { value: "10.122" } });
+    expect(input.value).toBe("10.12");
   });
 });

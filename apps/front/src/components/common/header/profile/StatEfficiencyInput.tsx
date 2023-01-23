@@ -25,6 +25,7 @@ export const StatEfficiencyInput = ({ stat }: Props) => {
       helperText=""
       label={PrimaryStatInfoMap[stat].text}
       max={999}
+      maxFractionDigits={2}
       sx={{
         ...(statEfficiency !== undefined && {
           "& .MuiFilledInput-root": {
