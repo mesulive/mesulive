@@ -211,25 +211,27 @@ export const getMethodProbMap: GetProbPerMethod = ({
                     const attackOptionIndex = options.findIndex(
                       (o) => o === "ATTACK"
                     );
-                    const attackGrade =
-                      attackOptionIndex === -1
-                        ? 0
-                        : optionValuesMap["ATTACK"][grades[attackOptionIndex]];
+                    let boundedGrades = grades;
+                    let boundedOptions = options;
 
-                    if (
-                      equipType === "WEAPON" &&
-                      weaponGrade &&
-                      attackGrade < weaponGrade
-                    ) {
-                      return false;
+                    if (equipType === "WEAPON") {
+                      const attackGrade =
+                        attackOptionIndex === -1
+                          ? 0
+                          : optionValuesMap["ATTACK"][
+                              grades[attackOptionIndex]
+                            ];
+                      if (weaponGrade && attackGrade < weaponGrade) {
+                        return false;
+                      }
+
+                      boundedGrades = grades.filter(
+                        (_, i) => i !== attackOptionIndex
+                      );
+                      boundedOptions = options.filter(
+                        (_, i) => i !== attackOptionIndex
+                      );
                     }
-
-                    const boundedGrades = grades.filter(
-                      (_, i) => i !== attackOptionIndex
-                    );
-                    const boundedOptions = options.filter(
-                      (_, i) => i !== attackOptionIndex
-                    );
 
                     // 나올 수 있는 스탯 총합 최소치에서 이미 목표 달성하면 true
                     if (
