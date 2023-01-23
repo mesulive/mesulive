@@ -8,7 +8,7 @@ export const MuiButton: ThemeComponents["MuiButton"] = {
       borderRadius: 16,
       fontWeight: "bold",
 
-      "&:hover, &:active": {
+      "&:hover, &:active, &.Mui-focusVisible": {
         boxShadow: "none",
       },
       ...(ownerState.variant === "contained" && {
