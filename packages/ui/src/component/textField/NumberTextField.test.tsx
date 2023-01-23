@@ -63,5 +63,8 @@ describe("NumberTextField", () => {
 
     fireEvent.change(input, { target: { value: "10.122" } });
     expect(input.value).toBe("10.12");
+
+    fireEvent.change(input, { target: { value: "10.0" } });
+    expect(input.value).toBe("10.0");
   });
 });

@@ -1,4 +1,3 @@
-import { rent } from "@mesulive/shared";
 import { putUnit } from "@mesulive/shared/src/number";
 import { TextField, TextFieldProps } from "@mui/material";
 import { pipe } from "fp-ts/function";
@@ -23,50 +22,55 @@ export const NumberTextField = ({
   onChange,
   ...restProps
 }: NumberTextFieldProps) => {
-  const [insertingPoint, setInsertingPoint] = useState(false);
+  const [outerValue, setOuterValue] = useState<string | undefined>(
+    value?.toString()
+  );
 
   return (
     <TextField
-      value={pipe(
-        value,
-        O.fromNullable,
-        O.map((v) =>
-          v.toLocaleString(undefined, {
-            maximumFractionDigits: maxFractionDigits,
-          })
-        ),
-        O.matchW(
-          () => "",
-          (v) => `${v}${insertingPoint ? "." : ""}`
-        )
-      )}
+      value={outerValue}
       onChange={(event) => {
         if (event.target.value.length <= 28) {
           if (onNumberChange) {
             pipe(
-              event.target.value,
-              O.fromNullable,
-              O.map((v) => v.replace(/,/g, "")),
-              O.filter((v) => !!v),
-              O.map(Number),
-              O.map(
-                (v) =>
-                  Math.floor(v * 10 ** maxFractionDigits) /
-                  10 ** maxFractionDigits
+              O.Do,
+              O.bind("originalValue", () =>
+                pipe(
+                  event.target.value,
+                  O.fromNullable,
+                  O.map((v) => {
+                    const chunks = v.split(".");
+
+                    if (chunks.length <= 1) return v;
+
+                    const lastChunks = chunks
+                      .slice(-1)[0]
+                      .slice(0, maxFractionDigits);
+                    return chunks.slice(0, -1).concat(lastChunks).join(".");
+                  }),
+                  O.altW(() => O.some(undefined))
+                )
               ),
-              O.altW(() => O.some(undefined)),
-              O.filter((v) => v === undefined || !Number.isNaN(v)),
-              O.filter((v) => v === undefined || max === undefined || v <= max),
-              O.map(
-                rent.io((v) => () => {
-                  setInsertingPoint(
-                    v !== undefined &&
-                      !!maxFractionDigits &&
-                      event.target.value.slice(-1) === "."
-                  );
-                })
+              O.bind("numberValue", ({ originalValue }) =>
+                pipe(
+                  originalValue,
+                  O.fromNullable,
+                  O.map((v) => v.replace(/,/g, "")),
+                  O.map(Number),
+                  O.altW(() => O.some(undefined)),
+                  O.filter((v) => v === undefined || !Number.isNaN(v)),
+                  O.filter(
+                    (v) => v === undefined || max === undefined || v <= max
+                  )
+                )
               ),
-              O.match(() => {}, onNumberChange)
+              O.match(
+                () => {},
+                ({ originalValue, numberValue }) => {
+                  setOuterValue(originalValue);
+                  onNumberChange(numberValue);
+                }
+              )
             );
             return;
           }
