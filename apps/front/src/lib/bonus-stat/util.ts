@@ -205,90 +205,75 @@ export const getMethodProbMap: GetProbPerMethod = ({
 
             // methodProbArray[i]: method[i]에서 성공할 확률
             return pipe(
-              optionsArray.map((options) =>
-                pipe(
-                  valueGrades.filter((grades) =>
-                    pipe(
-                      O.Do,
-                      O.bind("attackOptionIndex", () =>
-                        O.some(options.findIndex((o) => o === "ATTACK"))
-                      ),
-                      O.bind("attackGrade", ({ attackOptionIndex }) =>
-                        pipe(
-                          attackOptionIndex,
-                          O.fromPredicate((i) => i >= 0),
-                          O.map((i) => optionValuesMap["ATTACK"][grades[i]]),
-                          O.alt(() => O.some(0))
+              optionsArray.map((options) => {
+                const accomplishedValuesGrades = valueGrades.filter(
+                  (grades) => {
+                    const attackOptionIndex = options.findIndex(
+                      (o) => o === "ATTACK"
+                    );
+                    const attackGrade =
+                      attackOptionIndex === -1
+                        ? 0
+                        : optionValuesMap["ATTACK"][grades[attackOptionIndex]];
+
+                    if (
+                      equipType === "WEAPON" &&
+                      weaponGrade &&
+                      attackGrade < weaponGrade
+                    ) {
+                      return false;
+                    }
+
+                    const boundedGrades = grades.filter(
+                      (_, i) => i !== attackOptionIndex
+                    );
+                    const boundedOptions = options.filter(
+                      (_, i) => i !== attackOptionIndex
+                    );
+
+                    // 나올 수 있는 스탯 총합 최소치에서 이미 목표 달성하면 true
+                    if (
+                      boundedOptions.reduce(
+                        (acc, option) => acc + optionValuesMap[option][0],
+                        0
+                      ) >= aimStat
+                    ) {
+                      return true;
+                    }
+
+                    // 나올 수 있는 스탯 총합 최대치에서서도 목표 달성 못하면 false
+                    if (
+                      boundedOptions.reduce(
+                        (acc, option) => acc + optionValuesMap[option][4],
+                        0
+                      ) < aimStat
+                    ) {
+                      return false;
+                    }
+
+                    return (
+                      boundedOptions.reduce(
+                        (acc, option, index) =>
+                          acc + optionValuesMap[option][boundedGrades[index]],
+                        0
+                      ) >= aimStat
+                    );
+                  }
+                );
+
+                return methodArray.map((method) =>
+                  accomplishedValuesGrades.length < 5 ** count
+                    ? accomplishedValuesGrades
+                        .map((grades) =>
+                          grades.reduce(
+                            (acc, grade) => acc * methodProbMap[method][grade],
+                            1
+                          )
                         )
-                      ),
-                      O.filter(
-                        ({ attackGrade }) =>
-                          equipType !== "WEAPON" ||
-                          !weaponGrade ||
-                          attackGrade >= weaponGrade
-                      ),
-                      O.map(({ attackOptionIndex, ...rest }) => ({
-                        ...rest,
-                        attackOptionIndex,
-                        ...pipe(
-                          { boundedOptions: options, boundedGrades: grades },
-                          O.fromPredicate(
-                            () =>
-                              equipType !== "WEAPON" || attackOptionIndex < 0
-                          ),
-                          O.getOrElse(() => ({
-                            boundedGrades: grades.filter(
-                              (_, i) => i !== attackOptionIndex
-                            ),
-                            boundedOptions: options.filter(
-                              (_, i) => i !== attackOptionIndex
-                            ),
-                          }))
-                        ),
-                      })),
-                      either.fromOption(() => false),
-                      either.filterOrElse(
-                        ({ boundedOptions }) =>
-                          boundedOptions.reduce(
-                            (acc, option) => acc + optionValuesMap[option][0],
-                            0
-                          ) < aimStat,
-                        () => true
-                      ),
-                      either.filterOrElse(
-                        ({ boundedOptions, boundedGrades }) =>
-                          boundedOptions.reduce(
-                            (acc, option, index) =>
-                              acc +
-                              optionValuesMap[option][boundedGrades[index]],
-                            0
-                          ) >= aimStat,
-                        () => false
-                      ),
-                      either.match(
-                        (v) => v,
-                        () => true
-                      )
-                    )
-                  ),
-                  (accomplishedValuesGrades) =>
-                    methodArray.map((method) =>
-                      pipe(accomplishedValuesGrades, (gradesArr) =>
-                        gradesArr.length < 5 ** count
-                          ? gradesArr
-                              .map((grades) =>
-                                grades.reduce(
-                                  (acc, grade) =>
-                                    acc * methodProbMap[method][grade],
-                                  1
-                                )
-                              )
-                              .reduce((acc, prob) => acc + prob, 0)
-                          : 1
-                      )
-                    )
-                )
-              ),
+                        .reduce((acc, prob) => acc + prob, 0)
+                    : 1
+                );
+              }),
               (methodProbArray) =>
                 methodProbArray
                   .filter((probArray) => probArray.some((prob) => prob > 0))
