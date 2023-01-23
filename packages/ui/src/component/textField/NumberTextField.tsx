@@ -25,8 +25,6 @@ export const NumberTextField = ({
 }: NumberTextFieldProps) => {
   const [insertingPoint, setInsertingPoint] = useState(false);
 
-  console.log(maxFractionDigits);
-
   return (
     <TextField
       value={pipe(
