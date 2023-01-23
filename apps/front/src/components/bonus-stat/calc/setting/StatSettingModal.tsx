@@ -1,4 +1,3 @@
-import { values } from "lodash";
 import { DialogTitleWithCloseButton } from "@mesulive/ui";
 import {
   Box,
@@ -7,12 +6,14 @@ import {
   Popover,
   PopoverProps,
 } from "@mui/material";
+import { values } from "lodash";
 import { useContext } from "react";
 import {
   ModalActionContext,
   ModalValueContext,
 } from "~/components/common/context/ModalProvider";
 import { StatEfficiencyInput } from "~/components/common/header/profile/StatEfficiencyInput";
+import { BonusStat } from "~/lib/bonus-stat";
 import { PrimaryStat } from "~/lib/maple/types";
 
 // TODO ProfileButton 사용하게 되면 이 파일 삭제
@@ -28,9 +29,15 @@ export const StatSettingContent = () => (
       gap: 16,
     }}
   >
-    {values(PrimaryStat.enum).map((stat) => (
-      <StatEfficiencyInput stat={stat} key={stat} />
-    ))}
+    {values(PrimaryStat.enum)
+      .filter((stat) =>
+        values(BonusStat.OptionStatMap).some((statArr) =>
+          statArr.some((s) => s === stat)
+        )
+      )
+      .map((stat) => (
+        <StatEfficiencyInput stat={stat} key={stat} />
+      ))}
   </Box>
 );
 

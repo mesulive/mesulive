@@ -25,16 +25,17 @@ export const StatEfficiencyInput = ({ stat }: Props) => {
       helperText=""
       label={PrimaryStatInfoMap[stat].text}
       max={999}
-      maxFractionDigits={2}
+      maxFractionDigits={4}
       sx={{
-        ...(statEfficiency !== undefined && {
-          "& .MuiFilledInput-root": {
-            backgroundColor: COLORS.MAIN_LIGHTER,
-          },
-          "& .MuiInputLabel-root": {
-            color: COLORS.MAIN,
-          },
-        }),
+        ...(statEfficiency !== undefined &&
+          statEfficiency !== 0 && {
+            "& .MuiFilledInput-root": {
+              backgroundColor: COLORS.MAIN_LIGHTER,
+            },
+            "& .MuiInputLabel-root": {
+              color: COLORS.MAIN,
+            },
+          }),
       }}
     />
   );
