@@ -2,7 +2,7 @@ import { putUnit } from "@mesulive/shared/src/number";
 import { TextField, TextFieldProps } from "@mui/material";
 import { pipe } from "fp-ts/function";
 import * as O from "fp-ts/Option";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export type NumberTextFieldProps = Omit<TextFieldProps, "type" | "value"> & {
   onNumberChange?: (num: number | undefined) => void;
@@ -22,9 +22,27 @@ export const NumberTextField = ({
   onChange,
   ...restProps
 }: NumberTextFieldProps) => {
-  const [outerValue, setOuterValue] = useState<string | undefined>(
-    value?.toString()
-  );
+  const [outerValue, setOuterValue] = useState<string>(value?.toString() ?? "");
+
+  useEffect(() => {
+    setOuterValue((origin) =>
+      pipe(
+        origin,
+        O.fromNullable,
+        O.map((v) => v.replace(/,/g, "")),
+        O.map(Number),
+        O.altW(() => O.some(undefined)),
+        O.filter((v) => v === value),
+        O.match(
+          () =>
+            value?.toLocaleString(undefined, {
+              maximumFractionDigits: maxFractionDigits,
+            }) ?? "",
+          () => origin
+        )
+      )
+    );
+  }, [maxFractionDigits, value]);
 
   return (
     <TextField
@@ -56,6 +74,7 @@ export const NumberTextField = ({
                   originalValue,
                   O.fromNullable,
                   O.map((v) => v.replace(/,/g, "")),
+                  O.filter((v) => !!v),
                   O.map(Number),
                   O.altW(() => O.some(undefined)),
                   O.filter((v) => v === undefined || !Number.isNaN(v)),
@@ -67,7 +86,7 @@ export const NumberTextField = ({
               O.match(
                 () => {},
                 ({ originalValue, numberValue }) => {
-                  setOuterValue(originalValue);
+                  setOuterValue(originalValue ?? "");
                   onNumberChange(numberValue);
                 }
               )
@@ -83,11 +102,11 @@ export const NumberTextField = ({
           Number(value),
           Math.floor,
           O.fromPredicate((v) => !Number.isNaN(v)),
-          O.filter((v) => v > 0),
           O.filter(() => !!showUnit),
+          O.filter((v) => v > 0),
           O.map(putUnit),
           O.matchW(
-            () => undefined,
+            () => (showUnit ? "0" : undefined),
             (v) => v
           )
         )

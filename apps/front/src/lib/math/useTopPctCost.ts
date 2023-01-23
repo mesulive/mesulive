@@ -78,7 +78,13 @@ export const useTopPctCost = (
   }, [_tag, params, sortedData]);
 
   const meanTopPct = useMemo(
-    () => getTopPctFromCost(meanCost),
+    () =>
+      pipe(
+        meanCost,
+        option.fromNullable,
+        option.map(getTopPctFromCost),
+        option.toUndefined
+      ),
     [getTopPctFromCost, meanCost]
   );
 

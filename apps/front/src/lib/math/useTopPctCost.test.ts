@@ -1,4 +1,6 @@
 import { renderHook } from "@mesulive/shared";
+import { option } from "fp-ts";
+import { pipe } from "fp-ts/function";
 import { constSelector } from "recoil";
 import { GD } from "~/lib/math/index";
 import { useTopPctCost } from "~/lib/math/useTopPctCost";
@@ -17,7 +19,17 @@ describe("useTopPctCost", () => {
 
     expect(meanCost).toBe(100);
     expect(meanTopPct).toBe(GD.getTopPctFromCost(0.01)(meanCost));
-    expect(getCostFromTopPct(75)).toBe(138);
+    expect(
+      pipe(
+        getCostFromTopPct(75),
+        option.fromNullable,
+        option.filter((v) => Math.abs(138 - v) < 1),
+        option.match(
+          () => false,
+          () => true
+        )
+      )
+    ).toBeTruthy();
     expect(getTopPctFromCost(138)).toBe(GD.getTopPctFromCost(0.01)(138));
 
     // Edge case

@@ -1,4 +1,8 @@
-import { getCombinations, getRepeatPermutations } from "~/lib/math/util";
+import {
+  getCombinations,
+  getPercent,
+  getRepeatPermutations,
+} from "~/lib/math/util";
 
 describe("getCombinations", () => {
   test("number", () => {
@@ -33,5 +37,11 @@ describe("getRepeatPermutations", () => {
       [4, 3],
       [4, 4],
     ]);
+  });
+});
+
+describe("getPercent", () => {
+  test("number", () => {
+    expect(getPercent(0.123456789)).toBe("12.34%");
   });
 });

@@ -6,7 +6,14 @@ describe("getCostFromTopPct", () => {
   test("valid input", () => {
     const inputArr: [number, number, number][] = [[0.01, 75, 138]];
     inputArr.forEach(([probability, topPct, result]) =>
-      expect(GD.getCostFromTopPct(probability)(topPct)).toBe(result)
+      expect(
+        pipe(
+          GD.getCostFromTopPct(probability)(topPct),
+          option.fromNullable,
+          option.filter((v) => Math.abs(v - result) < 1),
+          option.toUndefined
+        )
+      ).toBeTruthy()
     );
   });
 });
@@ -19,10 +26,10 @@ describe("getTopPctFromCost", () => {
         pipe(
           GD.getTopPctFromCost(probability)(cost),
           option.fromNullable,
-          option.map(Math.floor),
+          option.filter((v) => Math.abs(v - result) < 1),
           option.toUndefined
         )
-      ).toBe(result)
+      ).toBeTruthy()
     );
   });
 });

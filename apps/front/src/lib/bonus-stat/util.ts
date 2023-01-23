@@ -148,12 +148,14 @@ export const getOptionValuesMap = ({
     O.getOrElseW(() => undefined)
   );
 
-export type GetProbPerMethod = (
-  param: {
-    aimStat?: number;
-    weaponGrade?: number;
-  } & CommonCondition
-) => Record<Method, number | undefined>;
+export type GetProbPerMethod = (param: {
+  level?: number;
+  equipType: EquipType;
+  statEfficiencyMap: Record<PrimaryStat, number | undefined>;
+  bossDrop?: boolean;
+  aimStat?: number;
+  weaponGrade?: number;
+}) => Record<Method, number | undefined>;
 export const getMethodProbMap: GetProbPerMethod = ({
   level,
   equipType,

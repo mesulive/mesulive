@@ -1,6 +1,6 @@
 import { pipe } from "fp-ts/function";
 import { values } from "lodash";
-import { atom, selector } from "recoil";
+import { atom, selector, selectorFamily } from "recoil";
 import { BonusStat } from "~/lib/bonus-stat/index";
 import { PrimaryStat } from "~/lib/maple/types";
 import { ProfileState } from "~/lib/profile/states";
@@ -76,15 +76,39 @@ export namespace BonusStatState {
       ),
   });
 
-  export const inputsSelector = selector({
+  export const inputsSelector = selector<
+    Parameters<BonusStat.GetProbPerMethod>[0]
+  >({
     key: "bonus-stat/inputsSelector",
     get: ({ get }) => ({
       level: get(equipLevelAtom),
       equipType: get(equipTypeAtom),
       bossDrop: get(bossDropAtom),
+      // TODO ProfileButton 표시하게 되면 제대로 된 username 사용
       statEfficiencyMap: get(ProfileState.profileAtoms("")),
       aimStat: get(aimStatAtom),
       weaponGrade: get(weaponGradeAtom),
     }),
+  });
+
+  export const calcResultAtom = atom<
+    Record<BonusStat.Method, number | undefined>
+  >({
+    key: "bonus-stat/calcResultAtom",
+    default: values(BonusStat.Method.enum).reduce(
+      (acc, method) => ({ ...acc, [method]: undefined }),
+      {} as Record<BonusStat.Method, number | undefined>
+    ),
+  });
+
+  export const calcResultSelector = selectorFamily<
+    number | undefined,
+    BonusStat.Method
+  >({
+    key: "bonus-stat/calcResultSelector",
+    get:
+      (method) =>
+      ({ get }) =>
+        get(calcResultAtom)[method],
   });
 }

@@ -10,6 +10,7 @@ export const SectionContainer = ({
       (theme) => ({
         [theme.breakpoints.up("laptop")]: {
           flexDirection: "row",
+          alignItems: "flex-start",
         },
 
         "& > *": {
