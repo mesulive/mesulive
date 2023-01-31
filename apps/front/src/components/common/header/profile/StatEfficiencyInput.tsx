@@ -1,4 +1,5 @@
 import { COLORS, NumberTextField } from "@mesulive/ui";
+import Color from "color";
 import { useRecoilState } from "recoil";
 import { PrimaryStat, PrimaryStatInfoMap } from "~/lib/maple/types";
 import { ProfileState } from "~/lib/profile/states";
@@ -31,6 +32,12 @@ export const StatEfficiencyInput = ({ stat }: Props) => {
           statEfficiency !== 0 && {
             "& .MuiFilledInput-root": {
               backgroundColor: COLORS.MAIN_LIGHTER,
+
+              "&:hover": {
+                backgroundColor: Color(COLORS.MAIN_LIGHTER)
+                  .darken(0.05)
+                  .toString(),
+              },
             },
             "& .MuiInputLabel-root": {
               color: COLORS.MAIN,
