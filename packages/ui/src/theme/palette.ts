@@ -15,6 +15,8 @@ export const palette: PaletteOptions = {
   },
   secondary: {
     main: COLORS.SECONDARY,
+    dark: COLORS.SECONDARY_DARK,
+    light: COLORS.SECONDARY_LIGHT,
   },
   error: {
     main: COLORS.ERROR,

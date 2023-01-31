@@ -16,7 +16,10 @@ export const COLORS = {
   MAIN_LIGHT: color("#FFA857"),
   MAIN_LIGHTER: color("#FFECDC"),
 
+  SECONDARY_DARK: color("#CC9302"),
   SECONDARY: color("#FFB703"),
+  SECONDARY_LIGHT: color("#FFCD4F"),
+  SECONDARY_LIGHTER: color("#FFE39C"),
 
   ERROR: color("#EF5350"),
 } as const;
