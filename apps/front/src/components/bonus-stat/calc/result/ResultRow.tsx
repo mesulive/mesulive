@@ -9,6 +9,7 @@ import {
 import { CompareArrowsRounded } from "@mui/icons-material";
 import { Box, InputAdornment, Typography } from "@mui/material";
 import { pipe } from "fp-ts/function";
+import { floor } from "lodash";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { BonusStat } from "~/lib/bonus-stat";
@@ -26,8 +27,8 @@ export const ResultRow = ({ method }: Props) => {
   const result = useRecoilValue(BonusStatState.calcResultSelector(method));
   const { meanCost, meanTopPct, getCostFromTopPct, getTopPctFromCost } =
     useTopPctCost({
-      _tag: "Bernoulli",
-      probability: result ?? 0,
+      type: "Bernoulli",
+      probability: result ?? -1,
     });
   const [cost, setCost] = useState<number | undefined>(undefined);
   const [topPct, setTopPct] = useState<number | undefined>(undefined);
@@ -41,7 +42,7 @@ export const ResultRow = ({ method }: Props) => {
     <Box>
       <SectionSubtitle>{BonusStat.MethodInfoMap[method].text}</SectionSubtitle>
       <Typography sx={styles.subTypo}>
-        확률: {result !== undefined && getPercent(result, { decimal: 8 })}
+        확률: {result !== undefined && `${floor(result * 100, 8)}%`}
       </Typography>
       <Typography sx={styles.subTypo}>
         평균:{" "}

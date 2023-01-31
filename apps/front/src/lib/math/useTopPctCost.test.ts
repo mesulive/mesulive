@@ -14,11 +14,11 @@ describe("useTopPctCost", () => {
         current: { meanCost, meanTopPct, getCostFromTopPct, getTopPctFromCost },
       },
     } = renderHook(() =>
-      useTopPctCost({ _tag: "Bernoulli", probability: 0.01 })
+      useTopPctCost({ type: "Bernoulli", probability: 0.01 })
     );
 
     expect(meanCost).toBe(100);
-    expect(meanTopPct).toBe(GD.getTopPctFromCost(0.01)(meanCost));
+    expect(meanTopPct).toBe(GD.getTopPctFromCost(0.01)(meanCost ?? -1));
     expect(
       pipe(
         getCostFromTopPct(75),
@@ -47,7 +47,7 @@ describe("useTopPctCost", () => {
         current: { meanCost, meanTopPct, getCostFromTopPct, getTopPctFromCost },
       },
     } = renderHook(() =>
-      useTopPctCost({ _tag: "data", recoilValue: arraySelector })
+      useTopPctCost({ type: "data", recoilValue: arraySelector })
     );
     expect(meanCost).toBe(3);
     expect(meanTopPct).toBe(60);

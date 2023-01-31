@@ -9,14 +9,14 @@ const emptyArraySelector = constSelector([]);
 export const useTopPctCost = (
   params:
     | {
-        _tag: "Bernoulli";
+        type: "Bernoulli";
         probability: number;
       }
-    | { _tag: "data"; recoilValue: RecoilValue<number[]> }
+    | { type: "data"; recoilValue: RecoilValue<number[]> }
 ) => {
-  const { _tag } = params;
+  const { type } = params;
   const data = useRecoilValue(
-    _tag === "data" ? params.recoilValue : emptyArraySelector
+    type === "data" ? params.recoilValue : emptyArraySelector
   );
 
   const sortedData = useMemo(() => {
@@ -25,7 +25,7 @@ export const useTopPctCost = (
 
   const getCostFromTopPct = useCallback(
     (topPct: number) => {
-      switch (_tag) {
+      switch (type) {
         case "Bernoulli":
           return GD.getCostFromTopPct(params.probability)(topPct);
         case "data":
@@ -39,12 +39,12 @@ export const useTopPctCost = (
           );
       }
     },
-    [_tag, params, sortedData]
+    [type, params, sortedData]
   );
 
   const getTopPctFromCost = useCallback(
     (cost: number) => {
-      switch (_tag) {
+      switch (type) {
         case "Bernoulli":
           return GD.getTopPctFromCost(params.probability)(cost);
         case "data":
@@ -63,11 +63,11 @@ export const useTopPctCost = (
           );
       }
     },
-    [_tag, params, sortedData]
+    [type, params, sortedData]
   );
 
   const meanCost = useMemo(() => {
-    switch (_tag) {
+    switch (type) {
       case "Bernoulli":
         return GD.mean(params.probability);
       case "data":
@@ -75,7 +75,7 @@ export const useTopPctCost = (
           sortedData.reduce((a, b) => a + b, 0) / sortedData.length
         );
     }
-  }, [_tag, params, sortedData]);
+  }, [type, params, sortedData]);
 
   const meanTopPct = useMemo(
     () =>
