@@ -9,12 +9,12 @@ import {
 } from "~/components/bonus-stat/calc/setting/StatSettingModal";
 import {
   ModalActionContext,
-  withPopoverProvider,
+  withModalProvider,
 } from "~/components/common/context/ModalProvider";
 import { useRefCallback } from "~/lib/hooks/ref";
 import { useScreenType } from "~/lib/hooks/window";
 
-export const StatSettingButton = withPopoverProvider(() => {
+export const StatSettingButton = withModalProvider(() => {
   const { openModal } = useContext(ModalActionContext);
   const [width, setWidth] = useState<number | undefined>(undefined);
   const [buttonRef, setButtonRef] = useRefCallback<HTMLButtonElement>();

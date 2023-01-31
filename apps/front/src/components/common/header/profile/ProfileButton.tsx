@@ -1,18 +1,18 @@
-import { Button, Typography } from "@mui/material";
+import { PASTEL_LIGHTNESS } from "@mesulive/shared";
 import { COLORS, DefaultProfile, Flex, sx } from "@mesulive/ui";
 import { ArrowDropDown } from "@mui/icons-material";
-import { useRecoilValue } from "recoil";
-import { ProfileState } from "~/lib/profile/states";
-import { PASTEL_LIGHTNESS } from "@mesulive/shared";
+import { Button, Typography } from "@mui/material";
 import Color from "color";
+import { useContext } from "react";
+import { useRecoilValue } from "recoil";
 import {
   ModalActionContext,
-  withPopoverProvider,
+  withModalProvider,
 } from "~/components/common/context/ModalProvider";
 import { ProfileSettingPopover } from "~/components/common/header/profile/ProfileSettingPopover";
-import { useContext } from "react";
+import { ProfileState } from "~/lib/profile/states";
 
-export const ProfileButton = withPopoverProvider(() => {
+export const ProfileButton = withModalProvider(() => {
   const currentUsername = useRecoilValue(ProfileState.currentUsernameAtom);
   const profile = useRecoilValue(ProfileState.profileAtoms(currentUsername));
 

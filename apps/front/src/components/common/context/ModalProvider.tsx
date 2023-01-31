@@ -1,3 +1,4 @@
+import { MultiProvider, WithEmotionProps } from "@mesulive/shared";
 import {
   ComponentType,
   createContext,
@@ -5,10 +6,9 @@ import {
   useMemo,
   useState,
 } from "react";
-import { MultiProvider, WithEmotionProps } from "@mesulive/shared";
 
 export interface IModalAction {
-  openModal: (target: HTMLElement | null) => void;
+  openModal: (target?: HTMLElement) => void;
   closeModal: () => void;
 }
 
@@ -33,13 +33,20 @@ export const ModalValueContext = createContext<IModalValue>({
 
 export const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [open, setOpen] = useState(false);
 
   const actions = useMemo<IModalAction>(
     () => ({
-      openModal: (target: HTMLElement | null) => {
-        setAnchorEl(target);
+      openModal: (target?: HTMLElement) => {
+        setOpen(true);
+        if (target) {
+          setAnchorEl(target);
+        }
       },
-      closeModal: () => setAnchorEl(null),
+      closeModal: () => {
+        setOpen(false);
+        setAnchorEl(null);
+      },
     }),
     []
   );
@@ -47,9 +54,9 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
   const values = useMemo<IModalValue>(
     () => ({
       anchorEl,
-      open: !!anchorEl,
+      open: open || !!anchorEl,
     }),
-    [anchorEl]
+    [anchorEl, open]
   );
 
   return (
@@ -66,7 +73,7 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const withPopoverProvider =
+export const withModalProvider =
   <T,>(Component: ComponentType<WithEmotionProps<T>>) =>
   (props: WithEmotionProps<T>) =>
     (
