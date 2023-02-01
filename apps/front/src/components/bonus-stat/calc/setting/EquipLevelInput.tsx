@@ -1,4 +1,4 @@
-import { floorNullableNumber } from "@mesulive/shared/src/number";
+import { floorNullableNumber } from "@mesulive/shared";
 import { NumberTextField } from "@mesulive/ui";
 import { flow } from "fp-ts/function";
 import { useRecoilState, useRecoilValue } from "recoil";

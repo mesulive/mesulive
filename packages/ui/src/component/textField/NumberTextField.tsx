@@ -1,4 +1,4 @@
-import { putUnit } from "@mesulive/shared/src/number";
+import { putUnit } from "@mesulive/shared";
 import { TextField, TextFieldProps } from "@mui/material";
 import { pipe } from "fp-ts/function";
 import * as O from "fp-ts/Option";
