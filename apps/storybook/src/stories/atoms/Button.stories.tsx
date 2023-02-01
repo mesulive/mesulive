@@ -1,4 +1,4 @@
-import { MainButton, OptionButton, Sx } from "@mesulive/ui";
+import { LightButton, MainButton, OptionButton, Sx } from "@mesulive/ui";
 import { Button, ButtonProps as MuiButtonProps, Stack } from "@mui/material";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { FC } from "react";
@@ -14,6 +14,7 @@ export default meta;
 const Template = ({
   ButtonProps,
   text = "버튼",
+  color = "primary",
   sx,
   ...args
 }: ButtonStoryProps &
@@ -42,6 +43,7 @@ const Template = ({
               {...ButtonProps}
               {...args}
               variant={variant}
+              color={color}
               disabled={disabled}
               key={`${disabled}`}
             >
@@ -74,6 +76,15 @@ export const Option: ComponentStory<typeof ButtonStory> = ({ ...props }) => (
   <Template
     ButtonProps={{
       Component: OptionButton,
+    }}
+    {...props}
+  />
+);
+
+export const Light: ComponentStory<typeof ButtonStory> = ({ ...props }) => (
+  <Template
+    ButtonProps={{
+      Component: LightButton,
     }}
     {...props}
   />
