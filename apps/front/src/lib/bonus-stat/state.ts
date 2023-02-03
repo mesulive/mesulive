@@ -1,6 +1,5 @@
-import { pipe } from "fp-ts/function";
 import { values } from "lodash";
-import { atom, selector, selectorFamily } from "recoil";
+import { atom, atomFamily, selector, selectorFamily } from "recoil";
 import { BonusStat } from "~/lib/bonus-stat/index";
 import { PrimaryStat } from "~/lib/maple/types";
 import { ProfileState } from "~/lib/profile/states";
@@ -67,13 +66,27 @@ export namespace BonusStatState {
     default: 0,
   });
 
-  // TODO 임시 state. ProfileButton 표시하게 되면 삭제
-  export const statEfficiencyUnfilledSelector = selector<boolean>({
-    key: "bonus-stat/statEfficiencyUnfilledSelector",
-    get: ({ get }) =>
-      pipe(get(ProfileState.profileAtoms("")), (v) =>
-        values(PrimaryStat.enum).every((stat) => v[stat] === undefined)
-      ),
+  export const actualStatFigureAtoms = atomFamily<
+    number | undefined,
+    PrimaryStat
+  >({
+    key: "bonus-stat/actualStatFigureAtoms",
+    default: undefined,
+  });
+
+  export const calculatedStatFigureSelector = selector<number>({
+    key: "bonus-stat/calculatedStatFigureSelector",
+    get: ({ get }) => {
+      const profile = get(
+        ProfileState.profileAtoms(get(ProfileState.currentUsernameAtom))
+      );
+
+      return values(PrimaryStat.enum).reduce(
+        (acc, stat) =>
+          acc + (get(actualStatFigureAtoms(stat)) ?? 0) * (profile[stat] ?? 0),
+        0
+      );
+    },
   });
 
   export const inputsSelector = selector<

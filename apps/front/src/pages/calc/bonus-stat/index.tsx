@@ -1,5 +1,6 @@
-import { PageTitle } from "@mesulive/ui";
+import { Flex, PageTitle } from "@mesulive/ui";
 import { Box } from "@mui/material";
+import { CalculateConvertedStatSection } from "~/components/bonus-stat/calc/calculate-converted-stat";
 import { ResultSection } from "~/components/bonus-stat/calc/result";
 import { SettingSection } from "~/components/bonus-stat/calc/setting";
 import { GlobalProvider } from "~/components/common/context/GlobalProvider";
@@ -21,7 +22,10 @@ const Home = () => {
           <PageTitle>추가옵션 기댓값 계산기</PageTitle>
         </Box>
         <SectionContainer>
-          <SettingSection />
+          <Flex direction="column" gap={16}>
+            <SettingSection />
+            <CalculateConvertedStatSection />
+          </Flex>
           <ResultSection />
         </SectionContainer>
       </PageContainer>

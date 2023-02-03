@@ -2,6 +2,7 @@ import { SectionBox, SectionTitle, sx } from "@mesulive/ui";
 import { Box } from "@mui/material";
 import { AimStatInput } from "~/components/bonus-stat/calc/setting/AimStatInput";
 import { BossDropCheckbox } from "~/components/bonus-stat/calc/setting/BossDropCheckbox";
+import { CalculateConvertedStatButton } from "~/components/bonus-stat/calc/setting/CalculateConvertedStatButton";
 import { EquipLevelInput } from "~/components/bonus-stat/calc/setting/EquipLevelInput";
 import { EquipTypeSelect } from "~/components/bonus-stat/calc/setting/EquipTypeSelect";
 import { StatSettingButton } from "~/components/bonus-stat/calc/setting/StatSettingButton";
@@ -19,6 +20,7 @@ export const SettingSection = () => {
         <AimStatInput />
       </Box>
       <StatSettingButton />
+      <CalculateConvertedStatButton />
     </SectionBox>
   );
 };

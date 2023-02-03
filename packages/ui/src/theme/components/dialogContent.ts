@@ -11,10 +11,6 @@ export const MuiDialogContent: ThemeComponents["MuiDialogContent"] = {
         ".MuiDialogTitle-root + &": {
           p: 16,
         },
-
-        ".MuiTypography-root": {
-          fontSize: "inherit",
-        },
       }),
   },
 };

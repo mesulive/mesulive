@@ -7,7 +7,7 @@ import { localStorageEffect } from "~/lib/recoil/effect";
 export namespace ProfileState {
   export const currentUsernameAtom = atom<string | undefined>({
     key: "profile/currentUsernameAtom",
-    default: undefined,
+    default: "",
   });
 
   export const profileAtoms = atomFamily<
@@ -47,5 +47,13 @@ export namespace ProfileState {
           [key]: newValue instanceof DefaultValue ? undefined : newValue,
         }));
       },
+  });
+
+  export const statValuableSelectors = selectorFamily<boolean, PrimaryStat>({
+    key: "profile/statValuableSelector",
+    get:
+      (stat) =>
+      ({ get }) =>
+        !!get(profileAtoms(get(currentUsernameAtom)))[stat],
   });
 }
