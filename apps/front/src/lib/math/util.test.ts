@@ -1,7 +1,7 @@
 import {
   getCombinations,
-  getPercent,
   getRepeatPermutations,
+  setMaxFractionDigits,
 } from "~/lib/math/util";
 
 describe("getCombinations", () => {
@@ -40,8 +40,8 @@ describe("getRepeatPermutations", () => {
   });
 });
 
-describe("getPercent", () => {
+describe("setMaxFractionDigits", () => {
   test("number", () => {
-    expect(getPercent(0.123456789)).toBe("12.34%");
+    expect(setMaxFractionDigits(2)(12.123456789)).toBe(12.12);
   });
 });

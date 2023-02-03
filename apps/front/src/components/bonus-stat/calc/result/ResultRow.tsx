@@ -15,7 +15,7 @@ import { useRecoilValue } from "recoil";
 import { BonusStat } from "~/lib/bonus-stat";
 import { BonusStatState } from "~/lib/bonus-stat/state";
 import { useTopPctCost } from "~/lib/math/useTopPctCost";
-import { getPercent } from "~/lib/math/util";
+import { setMaxFractionDigits } from "~/lib/math/util";
 
 interface Props extends Sx {
   method: BonusStat.Method;
@@ -52,9 +52,8 @@ export const ResultRow = ({ method }: Props) => {
             1 / result,
             getTopPctFromCost,
             (v) => v ?? 0,
-            (v) => v / 100,
-            getPercent
-          )})`}
+            setMaxFractionDigits(2)
+          )}%)`}
       </Typography>
       <Flex direction="row" sx={{ mt: 8 }} gap={8} align="start">
         <NumberTextField

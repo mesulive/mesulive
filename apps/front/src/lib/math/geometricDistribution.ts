@@ -5,7 +5,7 @@ export const mean = (prob: number) =>
   pipe(
     prob,
     O.fromPredicate((v) => v > 0 && v <= 1),
-    O.map((v) => Math.ceil(1 / v)),
+    O.map((v) => 1 / v),
     O.toUndefined
   );
 

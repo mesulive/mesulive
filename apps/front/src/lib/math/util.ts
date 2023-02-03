@@ -32,9 +32,5 @@ export const getRepeatPermutations = <T>(array: T[], length: number): T[][] => {
   return results;
 };
 
-export const getPercent = (value: number, options?: { decimal?: number }) => {
-  const { decimal = 2 } = options || {};
-  return `${(Math.floor(value * 10 ** (decimal + 2)) / 10 ** decimal).toFixed(
-    decimal
-  )}%`;
-};
+export const setMaxFractionDigits = (fractionDigits: number) => (num: number) =>
+  Number(num.toFixed(fractionDigits));

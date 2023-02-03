@@ -82,6 +82,7 @@ export const useTopPctCost = (
       pipe(
         meanCost,
         option.fromNullable,
+        option.map(Math.floor),
         option.map(getTopPctFromCost),
         option.toUndefined
       ),
