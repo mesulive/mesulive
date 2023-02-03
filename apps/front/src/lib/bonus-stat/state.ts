@@ -42,7 +42,7 @@ export namespace BonusStatState {
     key: "bonus-stat/aimStatHelperTextAtom",
     get: ({ get }) => {
       if (get(equipTypeAtom) === "WEAPON") {
-        return "무기 추옵에 대한 환산 스탯은 제외됩니다.";
+        return "무기 공격력/마력 추옵에 대한 환산 스탯은 제외됩니다.";
       }
 
       return "";

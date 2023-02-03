@@ -78,7 +78,7 @@ export const PrimaryStatInfoMap: Record<PrimaryStat, { text: string }> = {
   "ALL %": { text: "올스탯 %" },
   ATTACK: { text: "공격력" },
   MAGIC_ATTACK: { text: "마력" },
-  BOSS_DAMAGE: { text: "보공" },
-  DAMAGE: { text: "데미지" },
-  IGNORE_DEFENSE: { text: "방무" },
+  BOSS_DAMAGE: { text: "보공 %" },
+  DAMAGE: { text: "데미지 %" },
+  IGNORE_DEFENSE: { text: "방무 %" },
 };
