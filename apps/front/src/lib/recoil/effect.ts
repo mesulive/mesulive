@@ -1,6 +1,5 @@
+import { localStorage } from "@mesulive/shared";
 import { AtomEffect } from "recoil";
-
-const localStorage = typeof window !== "undefined" ? window.localStorage : null;
 
 export const localStorageEffect: <T>(
   localStorageKey: string
@@ -16,10 +15,10 @@ export const localStorageEffect: <T>(
 
       onSet((newValue, _, isReset) => {
         if (isReset) {
-          localStorage.removeItem(localStorageKey);
+          localStorage?.removeItem(localStorageKey);
         }
 
-        localStorage.setItem(localStorageKey, JSON.stringify(newValue));
+        localStorage?.setItem(localStorageKey, JSON.stringify(newValue));
       });
     }
   };
