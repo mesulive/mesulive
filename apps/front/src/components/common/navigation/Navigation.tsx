@@ -63,7 +63,12 @@ const NavigationDrawer = forwardRef<HTMLDivElement, NavigationDrawerProps>(
       >
         <Box component="nav">
           <GroupTypography>기댓값 계산기</GroupTypography>
-          <NavLink href="/calc/bonus-stat" icon={Flame} sx={{ mt: 16 }}>
+          <NavLink
+            href="/calc/bonus-stat"
+            icon={Flame}
+            sx={{ mt: 16 }}
+            label="NEW"
+          >
             추가옵션
           </NavLink>
           <NavLink
@@ -80,6 +85,8 @@ const NavigationDrawer = forwardRef<HTMLDivElement, NavigationDrawerProps>(
             externalLink="https://mesu.live/sim/starforce"
             icon={Star}
             sx={{ mt: 16 }}
+            label="구버전"
+            target="_self"
           >
             스타포스
           </NavLink>

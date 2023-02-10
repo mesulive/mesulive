@@ -5,6 +5,7 @@ import { LinkProps } from "next/dist/client/link";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import {
+  ComponentProps,
   FC,
   ReactNode,
   SVGProps,
@@ -29,6 +30,8 @@ interface Props extends Sx, Pick<LinkProps, "href"> {
   disabled?: boolean;
   icon?: FC<SVGProps<SVGSVGElement>>;
   externalLink?: string;
+  label?: string;
+  target?: ComponentProps<"a">["target"];
 }
 
 export const NavLink = ({
@@ -38,6 +41,8 @@ export const NavLink = ({
   disabled,
   icon: Icon,
   externalLink,
+  label,
+  target = "_blank",
 }: Props) => {
   const { pathname, route } = useRouter();
   const screenType = useScreenType();
@@ -85,6 +90,9 @@ export const NavLink = ({
             ...(pathname === href && {
               color: COLORS.MAIN,
               fill: COLORS.MAIN,
+              [`.${NAVIGATION_LINK_INFO_BOX_CLASSNAME}`]: {
+                backgroundColor: COLORS.MAIN,
+              },
             }),
 
             ...(disabled && {
@@ -129,7 +137,7 @@ export const NavLink = ({
             {children}
           </Typography>
         </Flex>
-        {(disabled || externalLink) && (
+        {(label || disabled || externalLink) && (
           <Flex
             align="center"
             justify="center"
@@ -141,8 +149,11 @@ export const NavLink = ({
             className={NAVIGATION_LINK_INFO_BOX_CLASSNAME}
           >
             <Typography sx={{ color: "white", fontSize: 12, fontWeight: 700 }}>
-              {disabled && "준비 중"}
-              {externalLink && "외부 링크"}
+              {label
+                ? label
+                : disabled
+                ? "준비 중"
+                : externalLink && "외부 링크"}
             </Typography>
           </Flex>
         )}
@@ -155,6 +166,7 @@ export const NavLink = ({
       sxProp,
       Icon,
       children,
+      label,
       externalLink,
       route,
       setHoverBoxMoveAnimated,
@@ -167,7 +179,7 @@ export const NavLink = ({
   if (externalLink !== undefined) {
     return (
       <Box sx={mergeStyles(styles.link(top, disabled), sxProp)}>
-        <a href={externalLink} ref={setRef} target="_blank" rel="noreferrer">
+        <a href={externalLink} ref={setRef} target={target} rel="noreferrer">
           <UI />
         </a>
       </Box>

@@ -34,12 +34,7 @@ module.exports = {
         unnamedComponents: "arrow-function",
       },
     ],
-    "react/jsx-props-no-spreading": [
-      2,
-      {
-        custom: "ignore",
-      },
-    ],
+    "react/jsx-props-no-spreading": "off",
     "react/jsx-curly-brace-presence": [
       1,
       {
