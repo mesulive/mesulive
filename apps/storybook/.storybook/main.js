@@ -34,7 +34,7 @@ module.exports = {
         },
       })
     );
-    const result = mergeConfig(config, {
+    return mergeConfig(config, {
       plugins: [
         tsconfigPaths.default(),
         svgr({
@@ -43,8 +43,6 @@ module.exports = {
       ],
       base: "/mesulive/",
     });
-    result.plugins.forEach(console.log);
-    return result;
   },
   // webpackFinal: async (config) => {
   //   config.module.rules[0].use[0].options.presets = [
