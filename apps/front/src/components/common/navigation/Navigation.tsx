@@ -10,9 +10,9 @@ import {
 } from "@mui/material";
 import { forwardRef, useEffect } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import Cube from "~/assets/images/cube.svg";
-import Flame from "~/assets/images/flame.svg";
-import Star from "~/assets/images/star.svg";
+import Cube from "~/assets/cube.svg";
+import Flame from "~/assets/flame.svg";
+import Star from "~/assets/star.svg";
 import { HEADER_HEIGHT } from "~/components/common/header/constant";
 import {
   NAVIGATION_TOGGLE_DURATION,

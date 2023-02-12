@@ -3,7 +3,7 @@ import { COLORS, Flex } from "@mesulive/ui";
 import { MenuRounded } from "@mui/icons-material";
 import { IconButton, useTheme } from "@mui/material";
 import Link from "next/link";
-import Logo from "~/assets/images/logo.svg";
+import Logo from "~/assets/logo.svg";
 import { useNavigation } from "~/lib/navigation/store";
 
 export const Header = () => {

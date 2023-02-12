@@ -31,7 +31,7 @@ const styles = {
     gridTemplateColumns: "repeat(2, 1fr)",
     gap: 16,
 
-    "& > *:nth-child(2n+1):nth-last-of-type(1)": {
+    "& > *:nth-of-type(2n+1):nth-last-of-type(1)": {
       gridColumn: "span 2",
     },
   }),
