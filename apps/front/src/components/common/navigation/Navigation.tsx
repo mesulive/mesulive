@@ -86,9 +86,8 @@ const NavigationDrawer = forwardRef<HTMLDivElement, NavigationDrawerProps>(
             externalLink="https://mesu.live/sim/starforce"
             icon={Star}
             sx={{ mt: 16 }}
-            label="점검 중"
+            label="구버전"
             target="_self"
-            disabled
           >
             스타포스
           </NavLink>

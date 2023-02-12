@@ -33,11 +33,10 @@ const LinkButtonPropsList: MainLinkButtonProps[] = [
   {
     color: COLORS.MAIN,
     text: "스타포스 시뮬레이터",
-    subText: "점검 중",
-    disabled: true,
+    subText: "구버전",
     Icon: Star,
     external: true,
-    link: "https://classic.mesu.live/sim/starforce",
+    link: "https://mesu.live/sim/starforce",
     target: "_self",
   },
 ];
