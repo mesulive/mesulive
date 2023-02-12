@@ -74,6 +74,7 @@ const NavigationDrawer = forwardRef<HTMLDivElement, NavigationDrawerProps>(
           <NavLink
             href="/calc/cube"
             externalLink="https://cubemesu.co"
+            label="큐브매수통"
             icon={Cube}
             sx={{ mt: 16 }}
           >
@@ -85,14 +86,15 @@ const NavigationDrawer = forwardRef<HTMLDivElement, NavigationDrawerProps>(
             externalLink="https://mesu.live/sim/starforce"
             icon={Star}
             sx={{ mt: 16 }}
-            label="구버전"
+            label="점검 중"
             target="_self"
+            disabled
           >
             스타포스
           </NavLink>
-          <NavLink href="/sim/cube" disabled icon={Cube} sx={{ mt: 16 }}>
-            큐브
-          </NavLink>
+          {/*<NavLink href="/sim/cube" disabled icon={Cube} sx={{ mt: 16 }}>*/}
+          {/*  큐브*/}
+          {/*</NavLink>*/}
           <HoverBox />
         </Box>
       </Drawer>
