@@ -6,6 +6,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { BonusStat } from "~/lib/bonus-stat";
 import { BonusStatState } from "~/lib/bonus-stat/state";
 import { PrimaryStat, PrimaryStatInfoMap } from "~/lib/maple/types";
+import { setMaxFractionDigits } from "~/lib/math/util";
 import { ProfileState } from "~/lib/profile/states";
 
 export const CalculateConvertedStatContent = () => (
@@ -46,7 +47,7 @@ const CalculatedStat = () => {
           fontWeight: "bold",
         }}
       >
-        {calculatedStatFigure}
+        {setMaxFractionDigits(4)(calculatedStatFigure)}
       </Typography>
       <Typography sx={{ fontWeight: 600, color: COLORS.GRAY_3, mb: 2 }}>
         급

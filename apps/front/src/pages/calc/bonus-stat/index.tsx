@@ -10,7 +10,7 @@ import { PageContainer, SectionContainer } from "~/components/common/layout";
 import { BonusStat } from "~/lib/bonus-stat";
 import { FlowProvider } from "~/lib/flow/flowProvider";
 
-const Home = () => {
+const BonusStatCalc = () => {
   return (
     <>
       <Head>
@@ -49,4 +49,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default BonusStatCalc;
