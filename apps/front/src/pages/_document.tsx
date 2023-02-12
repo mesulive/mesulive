@@ -17,7 +17,10 @@ const Document = () => {
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="ko_KR" />
-        <meta property="og:image" content="https://mesu.live/thumbnail.png" />
+        <meta
+          property="og:image"
+          content="https://next.mesu.live/thumbnail.png"
+        />
         <meta name="theme-color" content="#FF8009" />
         <link rel="apple-touch-icon" href="/icon/apple-icon-192x192.png" />
         <link
