@@ -3,6 +3,7 @@
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "../../packages/ui"],
   "exclude": ["node_modules"],
   "compilerOptions": {
+    "jsxImportSource": "@emotion/react",
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"]

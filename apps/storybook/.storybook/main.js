@@ -1,5 +1,7 @@
 const { mergeConfig } = require("vite");
 const tsconfigPaths = require("vite-tsconfig-paths");
+const svgr = require("vite-plugin-svgr");
+const react = require("@vitejs/plugin-react");
 
 module.exports = {
   stories: [
@@ -11,18 +13,38 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
   ],
-  framework: "@storybook/react",
-  core: {
-    builder: "@storybook/builder-vite",
+  framework: {
+    name: "@storybook/react-vite",
+    options: {},
   },
   features: {
     previewMdx2: true,
   },
   viteFinal: async (config) => {
-    return mergeConfig(config, {
-      plugins: [tsconfigPaths.default()],
+    config.plugins = config.plugins.filter(
+      (plugin) =>
+        !(Array.isArray(plugin) && plugin[0]?.name.includes("vite:react"))
+    );
+    config.plugins.push(
+      react({
+        exclude: [/\.stories\.(t|j)sx?$/, /node_modules/],
+        jsxImportSource: "@emotion/react",
+        babel: {
+          plugins: ["@emotion/babel-plugin"],
+        },
+      })
+    );
+    const result = mergeConfig(config, {
+      plugins: [
+        tsconfigPaths.default(),
+        svgr({
+          exportAsDefault: true,
+        }),
+      ],
       base: "/mesulive/",
     });
+    result.plugins.forEach(console.log);
+    return result;
   },
   // webpackFinal: async (config) => {
   //   config.module.rules[0].use[0].options.presets = [
@@ -59,4 +81,7 @@ module.exports = {
   //
   //   return config;
   // },
+  docs: {
+    autodocs: true,
+  },
 };

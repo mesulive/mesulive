@@ -1,4 +1,4 @@
 module.exports = {
   root: true,
-  extends: ["mesulive"],
+  extends: ["mesulive", "plugin:storybook/recommended"]
 };
