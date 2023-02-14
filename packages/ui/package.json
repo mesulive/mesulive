@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "TIMING=1 eslint \"**/*.ts*\"",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "tsc:check": "tsc --noEmit"
   },
   "repository": {
     "type": "git",

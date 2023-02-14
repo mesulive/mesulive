@@ -2,13 +2,17 @@
   "name": "@mesulive/front",
   "version": "0.0.0",
   "private": true,
+  "files": [
+    "src"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "tsc:check": "tsc --noEmit"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",

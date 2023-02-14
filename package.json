@@ -12,6 +12,7 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
+    "tsc:check": "turbo run tsc:check",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "syncpack:list": "syncpack list-mismatches",
     "syncpack:fix": "syncpack fix-mismatches && yarn"

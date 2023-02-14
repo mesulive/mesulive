@@ -17,6 +17,7 @@
     "test:watch": {
       "outputs": [],
       "cache": false
-    }
+    },
+    "tsc:check": {}
   }
 }
