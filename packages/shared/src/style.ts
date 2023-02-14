@@ -1,10 +1,10 @@
+import Color from "color";
 import { Properties, Property } from "csstype";
 import { of } from "./type";
-import Color from "color";
 
-export const cssObject = of<Properties>;
+export const cssObject = of<Properties>();
 
-export const color = of<Property.Color>;
+export const color = of<Property.Color>();
 
 export const pxArray = (...arr: number[]): Property.Padding =>
   arr

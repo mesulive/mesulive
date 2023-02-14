@@ -4,7 +4,10 @@ import {
 } from "@emotion/react/types/jsx-namespace";
 import { SVGProps as ReactSVGProps } from "react";
 
-export const of = <T>(p: T) => p;
+export const of =
+  <T>() =>
+  (p: T) =>
+    p;
 
 export type WithEmotionProps<P> = EmotionJSX.IntrinsicAttributes &
   WithConditionalCSSProp<P> &

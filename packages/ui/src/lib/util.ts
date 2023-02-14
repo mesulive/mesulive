@@ -3,9 +3,9 @@ import { of } from "@mesulive/shared";
 import { SxProps, Theme } from "@mui/material";
 import { BREAKPOINTS, ScreenType } from "./constant";
 
-export const sx = of<SxProps<Theme>>;
+export const sx = of<SxProps<Theme>>();
 
-export const css = of<Interpolation<Theme>>;
+export const css = of<Interpolation<Theme>>();
 
 export type Sx = { sx?: SxProps<Theme> };
 
