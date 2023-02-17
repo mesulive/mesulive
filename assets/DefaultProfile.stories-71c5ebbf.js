@@ -1,0 +1,5 @@
+import{j as p}from"./useFormControl-b047547c.js";import{D as a,g as i}from"./index-5c47f5f8.js";import"./index-f1f749bf.js";import"./_commonjsHelpers-042e6b4d.js";import"./jsx-runtime-670450c2.js";import"./inheritsLoose-93e09647.js";import"./emotion-use-insertion-effect-with-fallbacks.browser.esm-3d5299f2.js";import"./Select-6817ded5.js";import"./index-96c5f47c.js";import"./createChainedFunction-0bab83cf.js";import"./Typography-2e30bb73.js";import"./client-43335465.js";import"./index-5f37af5d.js";const C={title:"Atom/DefaultProfile",component:a},o=({color:s,...m})=>p(a,{color:s,...m});o.args={color:i(50)};var r,t,e;o.parameters={...o.parameters,docs:{...(r=o.parameters)==null?void 0:r.docs,source:{originalSource:`({
+  color,
+  ...restProps
+}: DefaultProfileProps) => <DefaultProfile color={color} {...restProps} />`,...(e=(t=o.parameters)==null?void 0:t.docs)==null?void 0:e.source}}};const E=["Default"];export{o as Default,E as __namedExportsOrder,C as default};
+//# sourceMappingURL=DefaultProfile.stories-71c5ebbf.js.map
