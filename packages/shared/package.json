@@ -10,7 +10,8 @@
   "scripts": {
     "lint": "TIMING=1 eslint \"**/*.ts*\"",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "tsc:check": "tsc --noEmit"
   },
   "devDependencies": {
     "@mesulive/tsconfig": "workspace:^",

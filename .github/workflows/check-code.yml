@@ -26,10 +26,6 @@ jobs:
       - name: Set yarn v3
         run: yarn set version 3.3.1
 
-      - name: Get yarn cache
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
-
       - name: Restore cached dependencies
         id: node-cache
         uses: actions/cache@v3
@@ -44,4 +40,4 @@ jobs:
         run: yarn
 
       - name: Check code
-        run: yarn lint test
+        run: yarn lint test tsc:check

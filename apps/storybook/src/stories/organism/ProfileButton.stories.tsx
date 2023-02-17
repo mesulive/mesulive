@@ -1,8 +1,8 @@
-import { ComponentMeta } from "@storybook/react";
 import { ProfileButton } from "@mesulive/front/src/components/common/header/profile/ProfileButton";
-import { useSetRecoilState } from "recoil";
 import { ProfileState } from "@mesulive/front/src/lib/profile/states";
+import { ComponentMeta } from "@storybook/react";
 import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 
 const meta: ComponentMeta<typeof ProfileButton> = {
   title: "Organism/ProfileButton",

@@ -12,11 +12,15 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "tsc:check": "turbo run tsc:check",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "syncpack:list": "syncpack list-mismatches",
+    "syncpack:fix": "syncpack fix-mismatches && yarn"
   },
   "devDependencies": {
     "eslint-config-mesulive": "workspace:*",
     "prettier": "latest",
+    "syncpack": "^8.5.14",
     "turbo": "latest"
   },
   "engines": {

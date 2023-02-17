@@ -1,21 +1,19 @@
-name: Deploy Storybook on Github Page
+name: Run sync-pack list
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  deploy-gh-page:
+  run-sync-pack-list:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-      NODE_OPTIONS: "--max_old_space_size=4096"
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -41,12 +39,5 @@ jobs:
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: yarn
 
-      - name: Build storybook
-        run: yarn build --filter storybook
-
-      - name: Deploy github page
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./apps/storybook/storybook-static
+      - name: Run syncpack
+        run: yarn syncpack:list || exit 1
