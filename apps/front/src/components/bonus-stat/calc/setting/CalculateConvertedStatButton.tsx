@@ -25,6 +25,11 @@ export const CalculateConvertedStatButton = withModalProvider(() => {
         onClick={() => {
           openModal();
         }}
+        sx={(theme) => ({
+          [theme.breakpoints.up("laptop")]: {
+            display: "none",
+          },
+        })}
       >
         스탯 환산치 계산
       </Button>

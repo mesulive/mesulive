@@ -18,9 +18,6 @@ export const StatSettingButton = withModalProvider(() => {
     <>
       <LightButton
         variant="contained"
-        sx={{
-          p: 8,
-        }}
         onClick={({ currentTarget }) => {
           openModal(currentTarget);
         }}

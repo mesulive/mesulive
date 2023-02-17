@@ -23,8 +23,10 @@ export const useWindowSize = () => {
 
   return windowDimensions;
 };
-export const useScreenType = () => {
-  const [screenType, setScreenType] = useState<ScreenType>(ScreenType.mobile);
+export const useScreenType = (initialValue?: ScreenType) => {
+  const [screenType, setScreenType] = useState<ScreenType>(
+    initialValue ?? ScreenType.mobile
+  );
 
   useEffect(() => {
     const handleResize = () => {
